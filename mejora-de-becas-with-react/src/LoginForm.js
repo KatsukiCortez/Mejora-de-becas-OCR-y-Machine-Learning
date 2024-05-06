@@ -1,10 +1,10 @@
-// Login.js
+// LoginForm.js
 
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; // Modifica la importación de 'useHistory'
-import './Login.css'; // Importa el archivo CSS de estilos
+import {useHistory} from 'react-router-dom'
+import './LoginForm.css'; // Importa el archivo CSS de estilos
 
-const Login = ({ history }) => {
+const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -15,10 +15,7 @@ const Login = ({ history }) => {
         // Aquí puedes agregar lógica para enviar los datos del formulario al servidor
         console.log('Email:', email);
         console.log('Password:', password);
-
-        // Redireccionar a la página que quieres
-        //return <Redirect to="/Home" />;
-        history.push('/Home');
+        history.push('/Home')
     };
 
     return (
@@ -52,4 +49,4 @@ const Login = ({ history }) => {
     );
 };
 
-export default Login;
+export default LoginForm;
