@@ -1,0 +1,10 @@
+aqui deberia ir todo el backnd node.js
+
+para iniciar con el node es cambiar a server
+escribir "git init" y enter
+crear un archivo index.js
+
+
+luego "npm install mysql express cors"
+
+para la instalacion de axios es: npm install axios, eso se tiene que hacer en la carpeta del CLIENTE!!

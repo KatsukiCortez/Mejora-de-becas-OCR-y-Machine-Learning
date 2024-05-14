@@ -70,14 +70,6 @@ img, video {
   text-align: center;
 }
 
-.showMessage {
-  display: block;
-  color: var(--whiteColor);
-  background: rgb(255, 0, 0);
-  border-radius: 3px;
-  text-align: center;
-}
-
 .btn {
   border: none;
   outline: none;
@@ -260,4 +252,117 @@ img, video {
   text-decoration: underline;
   cursor: pointer;
   opacity: 1;
+}
+
+/*ESTILOS DEL DASHBOARD*/
+.dashboard {
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  margin: auto;
+}
+.dashboard .dashboardContainer {
+  height: 95vh;
+  width: 95%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgb(194, 194, 194);
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 500px) {
+  .heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 918px) {
+  .heading {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 990px) {
+  .heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+/* QUERIES PARA EL LOGIN Y REGISTRARSE*/
+@media screen and (max-width: 602px) {
+  .loginPage .container, .registerPage .container {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  .loginPage .container .videoDiv, .registerPage .container .videoDiv {
+    width: 100%;
+  }
+  .loginPage .container .videoDiv .textDiv .title, .registerPage .container .videoDiv .textDiv .title {
+    font-size: 20px;
+  }
+  .loginPage .container .videoDiv .textDiv p, .registerPage .container .videoDiv .textDiv p {
+    padding: 1rem;
+  }
+  .loginPage .container .videoDiv .footerDiv .text, .registerPage .container .videoDiv .footerDiv .text {
+    font-size: 12px;
+  }
+  .loginPage .container .videoDiv .footerDiv .btn, .registerPage .container .videoDiv .footerDiv .btn {
+    padding: 0.4rem 1.5rem;
+  }
+  .loginPage .container .formDiv, .registerPage .container .formDiv {
+    gap: 1rem;
+    transform: translateY(-0.5rem);
+  }
+  .loginPage .container .formDiv .headerDiv, .registerPage .container .formDiv .headerDiv {
+    padding: 1rem 0;
+  }
+  .loginPage .container .formDiv .headerDiv img, .registerPage .container .formDiv .headerDiv img {
+    width: 40px;
+  }
+  .loginPage .container .formDiv .headerDiv h3, .registerPage .container .formDiv .headerDiv h3 {
+    font-size: 20px;
+  }
+  .loginPage .container .formDiv .form, .registerPage .container .formDiv .form {
+    gap: 0.5rem;
+  }
+  .loginPage .container .formDiv .form .inputDiv .input, .registerPage .container .formDiv .form .inputDiv .input {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 678px) {
+  .loginPage .container .videoDiv .textDiv .title, .registerPage .container .videoDiv .textDiv .title {
+    font-size: 25px;
+  }
+  .loginPage .container .videoDiv .textDiv p, .registerPage .container .videoDiv .textDiv p {
+    padding: 1rem;
+  }
+  .loginPage .container .videoDiv .footerDiv .text, .registerPage .container .videoDiv .footerDiv .text {
+    font-size: 12px;
+  }
+  .loginPage .container .videoDiv .footerDiv .btn, .registerPage .container .videoDiv .footerDiv .btn {
+    padding: 0.8rem 1.5rem;
+  }
+  .loginPage .container .formDiv .headerDiv, .registerPage .container .formDiv .headerDiv {
+    padding: 1.5rem 0;
+  }
+  .loginPage .container .formDiv .headerDiv h3, .registerPage .container .formDiv .headerDiv h3 {
+    font-size: 20px;
+  }
+  .loginPage .container .formDiv .form .inputDiv .input, .registerPage .container .formDiv .form .inputDiv .input {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+@media screen and (max-width: 927px) {
+  .loginPage .container, .registerPage .container {
+    width: 85%;
+  }
+}
+::-webkit-scrollbar {
+  display: none;
 }/*# sourceMappingURL=App.css.map */
