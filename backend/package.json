@@ -1,0 +1,16 @@
+{
+  "name": "back_ocr_ml",
+  "version": "1.0.0",
+  "description": "Proyecto de Backend del Sistema de Becas con OCR y Machine Learning ",
+  "main": "app.js",
+  "scripts": {
+    "test": "",
+    "start": "node start"
+  },
+  "author": "Otra Vez Ustedes",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
+  }
+}
