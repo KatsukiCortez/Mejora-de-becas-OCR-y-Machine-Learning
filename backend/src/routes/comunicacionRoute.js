@@ -1,5 +1,6 @@
-const { express } = require('express');
-const { router } = express.Router();
+const express = require('express');
+const router = express.Router();
+const { body, validationResult } = require('express-validator');
 const { comunicacionController } = require('../controllers/comunicacionController');
 const { validarNuevaComunicacion } = require('../middlewares/comunicaionMiddleware');
 
