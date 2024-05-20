@@ -34,9 +34,9 @@ app.use('/octi', seguimiento);
 app.use('/octi', solicitud);
 app.use('/octi', user); 
 
-app.get("/api", (req, res) => {
+/* app.get("/octi", (req, res) => {
   res.json({ message: "Hola desde el servidor!" });
-});
+}); */
 
 sequelize.authenticate()
   .then(() => {
