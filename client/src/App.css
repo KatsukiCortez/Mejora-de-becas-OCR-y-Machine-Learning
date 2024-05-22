@@ -118,10 +118,7 @@ img, video {
   border-radius: 10px;
   overflow: hidden;
 }
-.loginPage .container .videoDiv video, .loginPage .container .videoDiv .footerDiv, .registerPage .container .videoDiv video, .registerPage .container .videoDiv .footerDiv {
-  position: absolute;
-}
-.loginPage .container .videoDiv video, .registerPage .container .videoDiv video {
+.loginPage .container .videoDiv w video, .registerPage .container .videoDiv w video {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;

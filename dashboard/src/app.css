@@ -45,7 +45,7 @@ li{
 }
 
 img{
-  width: 100%;
+  width: 10  0%;
   height: auto;
 }
 
@@ -56,6 +56,7 @@ img{
 .grid{
   display: grid;
   align-items: center;
+  gap: 1.5rem;
 }
 .btn{
   border: none;
@@ -95,4 +96,9 @@ body{
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 2px 2px 8px var(--greyText);
+}
+
+/* VAMOS A ESCONDER EL SCROLL*/
+::-webkit-scrollbar{
+  display: none;
 }
