@@ -2,12 +2,14 @@ import React from 'react'
 import './sidebar.css'
 
 import logo from '../../Assets/logo.png'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Iconos
 import { IoMdSpeedometer } from "react-icons/io";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { GrConfigure } from "react-icons/gr";
+import { RiLogoutBoxFill } from "react-icons/ri";
 
 import { BsQuestionCircle } from "react-icons/bs";
 
@@ -106,6 +108,20 @@ const Sidebar = () => {
             </a>
           </li>
         </ul>
+
+
+      
+      </div>
+
+      <div className="logoutDiv">
+        <li className='listItem'>
+          <a href="/">
+            <RiLogoutBoxFill className='icon'/>
+            <span>
+              Cerrar sesion
+            </span>
+          </a>
+        </li>
       </div>
       
       <div className="sideBarCard">

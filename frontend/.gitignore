@@ -1,3 +1,8 @@
+# Ignorar node_modules en carpetas client y server
+client/node_modules/
+server/node_modules/
+
+# Otros patrones comunes a nivel de repositorio
 # Logs
 logs
 *.log
@@ -7,7 +12,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
 dist
 dist-ssr
 *.local
