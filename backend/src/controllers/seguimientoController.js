@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+/* const { validationResult } = require('express-validator');
 const { SeguimientoBecas } = require('../models/seguimientoBecasModel');
 const { SolicitudesBecas } = require('../models/solicitudBecaModel');
 
@@ -100,4 +100,4 @@ module.exports = {
     createSeguimientoBecas,
     updateSeguimientoBecaById,
     deleteSeguimientoBecaById
-  };
+  }; */

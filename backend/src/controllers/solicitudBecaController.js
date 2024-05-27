@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+/* const { validationResult } = require('express-validator');
 const { SolicitudBeca } = require('../models/solicitudBecaModel');
 
 // Crear una nueva solicitud de beca
@@ -82,4 +82,4 @@ module.exports = {
     getSolicitudBecaById,
     getAllSolicitudesBecas,
     deleteSolicitudBecaById
-  };
+  }; */

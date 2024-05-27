@@ -1,6 +1,6 @@
-const { express } = require('express');
+/* const express = require('express');
 const { body } = require('express-validator');
-const { estudianteController } = require('../controllers/estudianteController');
+const estudianteController = require('../controllers/estudianteController');
 
 const router = express.Router();
 
@@ -32,3 +32,4 @@ router.put('/estudiantes/:id', validarDatosEstudiante, estudianteController.upda
 router.delete('/estudiantes/:id', estudianteController.deleteEstudiante);
 
 module.exports = router;
+ */

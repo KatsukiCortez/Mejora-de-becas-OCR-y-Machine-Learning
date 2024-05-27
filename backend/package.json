@@ -10,11 +10,13 @@
   "author": "Otra Vez Ustedes",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-validator": "^7.0.1",
     "mysql": "^2.18.1",
-    "mysql2": "^3.9.7",
+    "mysql2": "^3.9.8",
     "sequelize": "^6.37.3"
   }
 }

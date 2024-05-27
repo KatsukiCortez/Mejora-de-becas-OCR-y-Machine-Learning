@@ -1,4 +1,4 @@
-const { Roles } = require('../models/Roles');
+/* const Roles = require('../models/roleModel');
 const { validationResult } = require('express-validator');
 
 // Crear un nuevo rol
@@ -70,3 +70,4 @@ module.exports = {
     getAllRoles,
     getRolById,
   };
+ */

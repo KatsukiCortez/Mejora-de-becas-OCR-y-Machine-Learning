@@ -1,6 +1,6 @@
-const { express } = require('express');
-const { router } = express.Router();
-const { seguimientoBecaController } = require('../controllers/seguimientoBecaController');
+/* const express = require('express');
+const router = express.Router();
+const seguimientoBecaController = require('../controllers/seguimientoBecaController');
 const { validarNuevoSeguimiento } = require('../middlewares/seguimientoMiddleware');
 
 // Ruta para obtener todos los seguimientos de becas
@@ -16,3 +16,4 @@ router.get('/seguimientos/:id', seguimientoBecaController.getSeguimientoBecaById
 router.delete('/seguimientos/:id', seguimientoBecaController.deleteSeguimientoBecaById);
 
 module.exports = router;
+ */

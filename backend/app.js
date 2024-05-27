@@ -1,4 +1,4 @@
-require('dotenv').config();
+/* require('dotenv').config();
 const { express } = require('express');
 const { sequelize } = require('./src/config/database.js');
 const { config } = require('./src/config/config.js');
@@ -34,9 +34,9 @@ app.use('/octi', seguimiento);
 app.use('/octi', solicitud);
 app.use('/octi', user); 
 
-/* app.get("/octi", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({ message: "Hola desde el servidor!" });
-}); */
+});
 
 sequelize.authenticate()
   .then(() => {
@@ -55,4 +55,61 @@ sequelize.authenticate()
 const PORT = (config.PORT || 3000);
 app.listen(PORT, () => {
   console.log(`Servidor en ejecución en el puerto ${PORT}`);
+});
+ */
+
+const express = require('express');
+// const bodyParser = require("body-parser"); /* deprecated */
+const cors = require('cors');
+
+const db = require('./src/models/db')
+
+const app = express();
+
+var corsOptions = {
+  origin: "http://localhost:8080"
+};
+
+app.use(cors());
+
+// parse requests of content-type - application/json
+app.use(express.json()); /* bodyParser.json() is deprecated */
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true })); /* bodyParser.urlencoded() is deprecated */
+
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
+});
+
+app.post('/login', (req, res)=>{
+  // NECESITAMOS OBTENER LAS VARIABLES DEL FORMULARIO
+  const sentloginUserName = req.body.LoginUserName
+  const sentLoginPassword = req.body.LoginPassword
+
+  // VAMOS A CREAR UN QUERY PARA INSERTAR A LA BASE DE DATOS TABLA USUARIOS
+  const SQL = 'SELECT * FROM users WHERE username = ? && password = ?'  // VAMOS A ENTRAR LOS VALORES ENTRELAZADSOS A LAS VARIABLES
+  const Values = [sentloginUserName, sentLoginPassword]
+
+  // QUERY A EJECUTAR
+  db.query(SQL, Values, (err, results)=>{
+      if (err) {
+        res.send({error: err})
+      } 
+      if (results.length > 0) {
+        res.send(results)
+      }
+      else{
+        res.send({message: 'Las credenciales no coinciden'})
+      }
+  })
+})
+
+/* require("./app/routes/tutorial.routes.js")(app); */
+
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });

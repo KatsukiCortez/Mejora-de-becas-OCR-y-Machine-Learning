@@ -1,6 +1,6 @@
-const { express } = require('express');
-const { router } = express.Router();
-const { historialAcademicoController } = require('../controllers/historialAcademicoController');
+/* const express = require('express');
+const router = express.Router();
+const historialAcademicoController = require('../controllers/historialAcademicoController');
 const { validateHistorialAcademico } = require('../middlewares/academicoMiddleware');
 
 //Ruta para obtener todas los historiales academicos
@@ -19,3 +19,4 @@ router.put('/historiales/:id', validateHistorialAcademico, historialAcademicoCon
 router.delete('/historiales/:id', historialAcademicoController.deleteHistorialAcademico);
 
 module.exports = router;
+ */

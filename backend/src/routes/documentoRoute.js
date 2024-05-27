@@ -1,5 +1,5 @@
-const { express } = require('express');
-const { documentoController } = require('../controllers/comunicacionController');
+/* const express = require('express');
+const documentoController = require('../controllers/comunicacionController');
 const { validarDocumento } = require('../middlewares/documentoMiddleware');
 
 const router = express.Router();
@@ -20,3 +20,4 @@ router.put('/documentos/:id', validarDocumento, documentoController.updateDocume
 router.delete('/documentos/:id', documentoController.deleteDocumento);
 
 module.exports = router;
+ */

@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
+const db = require('../config/db.config'),
+    sequelize = db.sequelize;
 const { Usuarios } = require('./userModel');
 
 const ComunicacionesUsuarios = sequelize.define('ComunicacionesUsuarios', {
@@ -17,6 +18,10 @@ const ComunicacionesUsuarios = sequelize.define('ComunicacionesUsuarios', {
   }
 });
 
-ComunicacionesUsuarios.belongsTo(Usuarios, { foreignKey: 'idUsuario' });
+
+ComunicacionesUsuarios.associate = function(models) {
+  ComunicacionesUsuarios.belongsTo(models.Usuarios, { foreignKey: 'idUsuario' });
+};
+
 
 module.exports = ComunicacionesUsuarios;

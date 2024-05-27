@@ -1,4 +1,4 @@
-const { ComunicacionesUsuarios } = require('../models/comunicacionModel'); // Importa el modelo de ComunicacionesUsuarios
+/* const { ComunicacionesUsuarios } = require('../models/comunicacionModel'); // Importa el modelo de ComunicacionesUsuarios
 
 // Controlador para obtener todas las comunicaciones de un usuario
 const getComunicacionesUsuario = async (req, res) => {
@@ -63,7 +63,8 @@ const createComunicacionUsuario = async (req, res) => {
 };
 
 module.exports = {
-    deleteComunicacionUsuario,  
-    getComunicacionesUsuario,
-    createComunicacionUsuario
-  };
+  deleteComunicacionUsuario,  
+  getComunicacionesUsuario,
+  createComunicacionUsuario
+};
+ */

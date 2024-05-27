@@ -1,6 +1,5 @@
-const { express } = require('express');
-const { userController } = require('../controllers/userController');
-const { manejoErrores } = require('../middlewares/manejoErrores');
+const express = require('express');
+const userController = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -17,9 +16,7 @@ router.post('/users', userController.addUser);
 router.put('/users/:id', userController.updateUser);
 
 // Ruta para eliminar un usuario por su ID
-router.delete('/users/:id', userController.deleteUserById);
+router.delete('/users/:id', userController.deleteUser);
 
-// Middleware de manejo de errores
-router.use(manejoErrores);
 
 module.exports = router;

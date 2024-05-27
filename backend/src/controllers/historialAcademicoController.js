@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+/* const { validationResult } = require('express-validator');
 const { HistorialAcademico } = require('../models/historialAcademicoModel'); 
 
 // Obtener todos los historiales académicos
@@ -89,4 +89,4 @@ module.exports = {
   createHistorialAcademico,
   updateHistorialAcademico,
   deleteHistorialAcademico
-};
+}; */

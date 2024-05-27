@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+/* const { validationResult } = require('express-validator');
 const { IngresoFamiliar } = require('../models/ingresoFamiliar');
 
 // Crear un nuevo registro de ingreso familiar
@@ -73,4 +73,4 @@ module.exports = {
     getAllIngresosFamiliares,
     getIngresoFamiliarById,
     deleteIngresoFamiliarById
-  };
+  }; */

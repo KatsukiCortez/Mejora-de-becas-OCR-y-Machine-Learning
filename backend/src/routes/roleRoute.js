@@ -1,7 +1,7 @@
-const { express } = require('express');
-const { router } = express.Router();
-const { rolesController } = require('../controllers/rolesController');
-const { validarRol } = require('../middlewares/rolMiddleware')
+/* const express = require('express');
+const router = express.Router();
+const rolesController = require('../controllers/roleController');
+const { validarRol } = require('../middlewares/rolMiddleware');
 
 //Ruta para crear un rol
 router.post('/roles', validarRol, rolesController.createRol);
@@ -16,3 +16,4 @@ router.get('/roles/:id', rolesController.getRolById);
 router.delete('/roles/:id', rolesController.deleteRolById);
 
 module.exports = router;
+ */

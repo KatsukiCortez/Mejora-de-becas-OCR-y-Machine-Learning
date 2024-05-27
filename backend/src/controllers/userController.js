@@ -1,6 +1,6 @@
-const { db } = require('../config/database');
+const { db } = require('../config/db.config');
 const { validationResult } = require('express-validator');
-const { bcrypt } = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 // Función de utilidad para manejar errores
 const handleError = (res, error) => {
@@ -96,6 +96,5 @@ module.exports = {
   addUser,
   getUserById,
   updateUser,
-  deleteUser,
-  validateUserData, // Incluido para validar datos en rutas que lo necesiten
+  deleteUser
 };

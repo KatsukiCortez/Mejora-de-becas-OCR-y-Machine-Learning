@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
-const { Roles } = require('./roleModel');
+const db = require('../config/db.config'),
+    sequelize = db.sequelize;
+const Roles = require('../models/roleModel');
 
 const Usuarios = sequelize.define('Usuarios', {
   idUsuario: {
@@ -17,6 +18,10 @@ const Usuarios = sequelize.define('Usuarios', {
     allowNull: false
   }
 });
-Usuarios.belongsTo(Roles, { foreignKey: 'idRol' });
+
+// Definir la asociación utilizando el método associate
+Usuarios.associate = function(models) {
+  Usuarios.belongsTo(models.Roles, { foreignKey: 'idRol' });
+};
 
 module.exports = Usuarios;

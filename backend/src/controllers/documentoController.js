@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+/* const { validationResult } = require('express-validator');
 const { Documentos } = require('../models/documentoModel'); // Importar el modelo de Documento
 
 // Obtener todos los documentos
@@ -111,3 +111,4 @@ module.exports = {
   updateDocumento,
   deleteDocumento
 };
+ */

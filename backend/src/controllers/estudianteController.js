@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+/* const { validationResult } = require('express-validator');
 const { Estudiante } = require('../models/estudianteModel');
 
 // Obtener todos los estudiantes
@@ -113,4 +113,4 @@ module.exports = {
     getEstudianteById,
     updateEstudiante,
     deleteEstudiante
-  };
+  }; */

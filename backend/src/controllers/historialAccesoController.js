@@ -1,4 +1,4 @@
-const { HistorialAcceso } = require('../models/historialAccesoModel');
+/* const { HistorialAcceso } = require('../models/historialAccesoModel');
 const { validationResult } = require('express-validator');
 
 // Crear un nuevo registro en el historial de acceso
@@ -77,4 +77,4 @@ module.exports = {
   getAllHistorialAcceso,
   getHistorialAccesoById,
   deleteHistorialAccesoById
-};
+}; */

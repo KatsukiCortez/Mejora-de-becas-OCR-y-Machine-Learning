@@ -1,7 +1,7 @@
-const express = require('express');
+/* const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
-const { comunicacionController } = require('../controllers/comunicacionController');
+const comunicacionController = require('../controllers/comunicacionController');
 const { validarNuevaComunicacion } = require('../middlewares/comunicaionMiddleware');
 
 // Ruta para obtener todas las comunicaciones de un usuario
@@ -15,3 +15,4 @@ router.delete('/comunicaciones/:idComunicacion', comunicacionController.deleteCo
 
 
 module.exports = router;
+ */
