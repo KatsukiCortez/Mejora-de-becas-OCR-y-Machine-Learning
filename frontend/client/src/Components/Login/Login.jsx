@@ -117,8 +117,6 @@ const Login = () => {
               <AiOutlineSwapRight className='icon'/>
             </button>
 
-            <a href="/dashboard">IR AL DASHBOARD</a>
-          
             <span className="forgotPassword">
               Olvide mi contrasena <a href="">Haga click aqui</a>
             </span>

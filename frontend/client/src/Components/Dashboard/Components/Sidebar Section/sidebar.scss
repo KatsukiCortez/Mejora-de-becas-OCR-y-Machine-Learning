@@ -158,4 +158,48 @@
       }
     }
   }
+
+  .logoutDiv{
+    // background: red;
+    font-size: var(--h2FontSize);
+    color: var(--blackColor);
+
+    .listItem{
+      padding: .8rem 2rem;
+      width: 100%;
+      position: relative;
+
+      &::before{
+        position: absolute;
+        content: '';
+        height: 0%;
+        left: 0;
+        width: 90%;
+        bottom: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        // background: var(--PrimaryColor);
+        background: red;
+      }
+
+      .menuLink{
+        color: var(--blackColor);
+        font-weight: 500;
+        transition: 0;
+          .icon{
+            margin-right: .5rem;
+          }
+      }
+
+      &:hover .menuLink{
+        // color: var(--whiteColor);
+        color: black;
+        transition: 0;
+      }
+      &:hover::before{
+        height: 100%;
+        transition: .3s ease;
+      }
+    }
+  }
 }

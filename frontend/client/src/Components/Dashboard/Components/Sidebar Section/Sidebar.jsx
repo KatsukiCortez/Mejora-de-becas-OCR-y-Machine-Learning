@@ -2,7 +2,7 @@ import React from 'react'
 import './sidebar.css'
 
 import logo from '../../Assets/logo.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // Iconos
 import { IoMdSpeedometer } from "react-icons/io";
@@ -10,6 +10,9 @@ import { FaCheckCircle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { GrConfigure } from "react-icons/gr";
 import { RiLogoutBoxFill } from "react-icons/ri";
+import { FaArrowTrendUp } from "react-icons/fa6";
+import { MdHistory } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
 
 import { BsQuestionCircle } from "react-icons/bs";
 
@@ -30,39 +33,39 @@ const Sidebar = () => {
         </h3>
         <ul className="menuLists grid">
           <li className="listItem">
-            <a href="" className="menuLink flex">
+            <NavLink to="/dashboard" className="menuLink flex">
               <IoMdSpeedometer className="icon"/>
               <span className='smallText'>
                 DashBoard
               </span>
-            </a>
+            </NavLink>
           </li>
 
           <li className="listItem">
-            <a href="" className="menuLink flex">
+            <NavLink to='/dashboard/gestion-becas' className="menuLink flex">
               <FaCheckCircle className="icon"/>
               <span className='smallText'>
                 Gestion de becas
               </span>
-            </a>
+            </NavLink>
           </li>
 
           <li className="listItem">
-            <a href="" className="menuLink flex">
+            <NavLink to='/dashboard/comunicacion' className="menuLink flex">
               <MdEmail className="icon"/>
               <span className='smallText'>
                 Comunicacion
               </span>
-            </a>
+            </NavLink>
           </li>
 
           <li className="listItem">
-            <a href="" className="menuLink flex">
+            <NavLink to='/dashboard/analisis' className="menuLink flex">
               <GrConfigure className="icon"/>
               <span className='smallText'>
                 Analisis de datos
               </span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -74,50 +77,39 @@ const Sidebar = () => {
         <ul className="menuLists grid">
           <li className="listItem">
             <a href="" className="menuLink flex">
-              <IoMdSpeedometer className="icon"/>
+              <FaArrowTrendUp  className="icon"/>
               <span className='smallText'>
-                DashBoard
+                Estadisticas
               </span>
             </a>
           </li>
-
+          
           <li className="listItem">
             <a href="" className="menuLink flex">
-              <FaCheckCircle className="icon"/>
+              <MdHistory  className="icon"/>
               <span className='smallText'>
-                Gestion de becas
+                Historial de acceso 
               </span>
             </a>
           </li>
-
+          
           <li className="listItem">
-            <a href="" className="menuLink flex">
-              <MdEmail className="icon"/>
+            <a href="/dashboard/gestion-becas" className="menuLink flex">
+              <FaUser  className="icon"/>
               <span className='smallText'>
-                Comunicacion
-              </span>
-            </a>
-          </li>
-
-          <li className="listItem">
-            <a href="" className="menuLink flex">
-              <GrConfigure className="icon"/>
-              <span className='smallText'>
-                Analisis de datos
+                Administrar usuarios
               </span>
             </a>
           </li>
         </ul>
-
-
       
       </div>
 
       <div className="logoutDiv">
         <li className='listItem'>
-          <a href="/">
+          <a href="/" className='menuLink Flex'>
             <RiLogoutBoxFill className='icon'/>
-            <span>
+            <span className='smallText'>
               Cerrar sesion
             </span>
           </a>
