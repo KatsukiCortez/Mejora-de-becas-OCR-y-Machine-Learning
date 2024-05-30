@@ -29,7 +29,7 @@ const Login = () => {
     e.preventDefault();
 
     // SE NECESITA axios PARA CREAR UNA API QUE CONECTE AL SERVIDOR - LA INSTALACION ESTAN EN INSTRUCCIONES
-    Axios.post('http://localhost:3002/login', {
+    Axios.post('http://localhost:8080/login', {
       // CREAR VARIABLE PARA ENVIAR AL SERVIDOR A TRAVEZ DE LA RUTA
       LoginUserName: loginUserName,
       LoginPassword: loginPassword

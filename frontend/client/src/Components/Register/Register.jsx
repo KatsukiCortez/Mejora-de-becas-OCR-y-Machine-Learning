@@ -25,7 +25,7 @@ const Register = () => {
   const createUser = (e)=>{
     e.preventDefault()
     // SE NECESITA axios PARA CREAR UNA API QUE CONECTE AL SERVIDOR - LA INSTALACION ESTAN EN INSTRUCCIONES
-    Axios.post('http://localhost:3002/register',{
+    Axios.post('http://localhost:8080/register',{
       // CREAR VARIABLE PARA ENVIAR AL SERVIDOR A TRAVEZ DE LA RUTA
       Email: email,
       UserName: userName,
