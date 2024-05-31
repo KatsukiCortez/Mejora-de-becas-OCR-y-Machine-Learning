@@ -17,7 +17,7 @@ const db = mysql.createConnection({
   user:'root',
   host: 'localhost',
   password:'',
-  database:'octidb'
+  database:'dbbecas'
 })
 
 // CREAMOS UNA RUTA AL SERVIDOR QUE REGISTRARA UN USUARIO
@@ -28,8 +28,8 @@ app.post('/register', (req, res)=>{
   const sentPassword = req.body.Password
 
   // VAMOS A CREAR UN QUERY PARA INSERTAR A LA BASE DE DATOS TABLA USUARIOS
-  const SQL = 'INSERT INTO users (email,username,password) VALUES (?,?,?)'  // VAMOS A ENTRAR LOS VALORES ENTRELAZADSOS A LAS VARIABLES
-  const Values = [sentEmail, sentUserName, sentPassword]
+  const SQL = 'INSERT INTO usuarios (email,nombre,password,idRol) VALUES (?,?,?,?)'  // VAMOS A ENTRAR LOS VALORES ENTRELAZADSOS A LAS VARIABLES
+  const Values = [sentEmail, sentUserName, sentPassword, 3]
 
   // QUERY A EJECUTAR
   db.query(SQL, Values, (err, results)=>{
@@ -50,7 +50,7 @@ app.post('/login', (req, res)=>{
   const sentLoginPassword = req.body.LoginPassword
 
   // VAMOS A CREAR UN QUERY PARA INSERTAR A LA BASE DE DATOS TABLA USUARIOS
-  const SQL = 'SELECT * FROM users WHERE username = ? && password = ?'  // VAMOS A ENTRAR LOS VALORES ENTRELAZADSOS A LAS VARIABLES
+  const SQL = 'SELECT * FROM usuarios WHERE nombre = ? && password = ?'  // VAMOS A ENTRAR LOS VALORES ENTRELAZADSOS A LAS VARIABLES
   const Values = [sentloginUserName, sentLoginPassword]
 
   // QUERY A EJECUTAR
