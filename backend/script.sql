@@ -1,8 +1,3 @@
-CREATE DATABASE DBbecas;
-
-USE DBbecas;
-
-
 CREATE TABLE Estudiante (
   idEstudiante INT PRIMARY KEY AUTO_INCREMENT,  
   nombre VARCHAR(50),
