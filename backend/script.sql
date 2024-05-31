@@ -70,7 +70,7 @@ CREATE TABLE SeguimientoBecas (
 CREATE TABLE HistorialAcceso (
   idHistorial INT PRIMARY KEY AUTO_INCREMENT, 
   idUsuario INT,
-  fechaHora DATETIME DEFAULT CONVERT_TZ(NOW(), '+00:00', '-05:00'),
+  fechaHora DATETIME DEFAULT CONVERT_TZ(NOW(), '+00:00', '+00:00'),
   tipoAccion VARCHAR(50),
   FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
 );
@@ -79,7 +79,7 @@ CREATE TABLE ComunicacionesUsuarios (
   idComunicacion INT PRIMARY KEY AUTO_INCREMENT, 
   idUsuario INT,
   mensaje VARCHAR(255),
-  fechaEnvio DATETIME DEFAULT CONVERT_TZ(NOW(), '+00:00', '-05:00'),
+  fechaEnvio DATETIME DEFAULT CONVERT_TZ(NOW(), '+00:00', '+00:00'),
   FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
 );
 
