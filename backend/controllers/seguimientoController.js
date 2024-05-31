@@ -13,9 +13,9 @@ exports.getSeguimientosBecas = async (req, res) => {
             });
         res.json(seguimientos);
     } catch (error) {
-        console.error('Error fetching seguimientos de becas:', error.message);
+        console.error('Error al obtener los seguimientos de becas:', error.message);
         res.status(500).json({
-            error: 'Server error',
+            error: 'Error del servidor',
             message: error.message,
             stack: error.stack
         });
@@ -35,15 +35,15 @@ exports.getSeguimientoBecaById = async (req, res) => {
         });
         if (!seguimiento) {
             return res.status(404).json({
-                error: 'Not found',
-                message: `Seguimiento de beca with ID ${req.params.id} not found`
+                error: 'No encontrado',
+                message: `Seguimiento de beca con el ID ${req.params.id} no se encontró`
             });
         }
         res.json(seguimiento);
     } catch (error) {
-        console.error(`Error fetching seguimiento de beca with ID ${req.params.id}:`, error.message);
+        console.error(`Error al obtener el seguimiento de beca con ID ${req.params.id}:`, error.message);
         res.status(500).json({
-            error: 'Server error',
+            error: 'Error del servidor',
             message: error.message,
             stack: error.stack
         });
@@ -53,12 +53,12 @@ exports.getSeguimientoBecaById = async (req, res) => {
 // Crear un nuevo seguimiento de beca
 exports.createSeguimientoBeca = async (req, res) => {
     try {
-        const newSeguimiento = await db.SeguimientoBecas.create(req.body);
-        res.status(201).json(newSeguimiento);
+        const nuevoSeguimiento = await db.SeguimientoBecas.create(req.body);
+        res.status(201).json(nuevoSeguimiento);
     } catch (error) {
-        console.error('Error creating seguimiento de beca:', error.message);
+        console.error('Error al crear el seguimiento de beca:', error.message);
         res.status(500).json({
-            error: 'Server error',
+            error: 'Error del servidor',
             message: error.message,
             stack: error.stack
         });
@@ -71,17 +71,17 @@ exports.updateSeguimientoBecaById = async (req, res) => {
         const seguimiento = await db.SeguimientoBecas.findByPk(req.params.id);
         if (!seguimiento) {
             return res.status(404).json({
-                error: 'Not found',
-                message: `Seguimiento de beca with ID ${req.params.id} not found`
+                error: 'No encontrado',
+                message: `Seguimiento de beca con el ID ${req.params.id} no se encontró`
             });
         }
 
         await seguimiento.update(req.body);
         res.json(seguimiento);
     } catch (error) {
-        console.error(`Error updating seguimiento de beca with ID ${req.params.id}:`, error.message);
+        console.error(`Error al actualizar el seguimiento de beca con ID ${req.params.id}:`, error.message);
         res.status(500).json({
-            error: 'Server error',
+            error: 'Error del servidor',
             message: error.message,
             stack: error.stack
         });
@@ -94,17 +94,17 @@ exports.deleteSeguimientoBecaById = async (req, res) => {
         const seguimiento = await db.SeguimientoBecas.findByPk(req.params.id);
         if (!seguimiento) {
             return res.status(404).json({
-                error: 'Not found',
-                message: `Seguimiento de beca with ID ${req.params.id} not found`
+                error: 'No encontrado',
+                message: `Seguimiento de beca con el ID ${req.params.id} no se encontró`
             });
         }
 
         await seguimiento.destroy();
-        res.status(204).send(); // No content
+        res.status(204).send(); // Sin contenido
     } catch (error) {
-        console.error(`Error deleting seguimiento de beca with ID ${req.params.id}:`, error.message);
+        console.error(`Error al eliminar el seguimiento de beca con ID ${req.params.id}:`, error.message);
         res.status(500).json({
-            error: 'Server error',
+            error: 'Error del servidor',
             message: error.message,
             stack: error.stack
         });
