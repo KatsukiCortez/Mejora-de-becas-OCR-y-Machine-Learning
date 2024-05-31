@@ -1,6 +1,14 @@
 const bcrypt = require('bcrypt'); // Importamos bcrypt para encriptar las contraseñas
-const db = require('./src/models/db'); // Importamos la configuración de la base de datos (asegúrate de que la ruta sea correcta)
 const saltRounds = 10; // Definimos el número de rondas de sal para bcrypt
+const mysql = require('mysql2');  //Verificar la conexión a la base de datos
+require('dotenv').config();  // Cargar las variables de entorno desde el archivo .env
+
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD || '',  // usa cadena vacía si no tiene password
+  database: process.env.DB_NAME
+});
 
 async function encryptAndSavePasswords() {
   try {
