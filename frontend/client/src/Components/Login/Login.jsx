@@ -24,28 +24,28 @@ const Login = () => {
   const [statusHolder, setstatusHolder] = useState('message')
 
   // ONCLICK QUE OBTIENE QUE USUARIO ESTA ENTRANDO
-  const loginUser = (e)=>{
-    // VAMOS A PREVENIR SUBIDAS
+  const loginUser = (e) => {
     e.preventDefault();
-
-    // SE NECESITA axios PARA CREAR UNA API QUE CONECTE AL SERVIDOR - LA INSTALACION ESTAN EN INSTRUCCIONES
+  
     Axios.post('http://localhost:8080/login', {
-      // CREAR VARIABLE PARA ENVIAR AL SERVIDOR A TRAVEZ DE LA RUTA
       LoginUserName: loginUserName,
       LoginPassword: loginPassword
-    }).then((response)=>{
-      console.log(response)
-
-      if (response.data.message || loginUserName == '' || loginPassword == '') {
-        // SI LAS CREDENCIALES NO COINCIDEN MANDAMOS AL LOGIN
-        navigateTo('/')
-        setLoginStatus('Credenciales no existen')
+    }).then((response) => {
+      console.log('Respuesta del servidor:', response.data);
+  
+      if (response.data.user) { // Verificar si hay un usuario devuelto en la respuesta
+        navigateTo('/dashboard'); // Redirigir al dashboard si el inicio de sesion es exitoso
+      } else {
+        navigateTo('/');
+        setLoginStatus('Credenciales no existen'); // Mostrar mensaje de error si no hay usuario
       }
-      else{
-        navigateTo('/dashboard')
-      }
-    })
-  }
+    }).catch((error) => {
+      console.error('Error al intentar iniciar sesión:', error);
+      navigateTo('/');
+      setLoginStatus('Error en el servidor'); // Mostrar mensaje de error si falla el servidor
+    });
+  };
+  
 
   useEffect(()=>{
     if (loginStatus !== '') {
