@@ -2,7 +2,9 @@ import React from 'react'
 
 const Comunicacion = () => {
   return (
-    <div>Este es comunicacion</div>
+    <div>
+      <h2>Este es comunicacion</h2>
+    </div>
   )
 }
 

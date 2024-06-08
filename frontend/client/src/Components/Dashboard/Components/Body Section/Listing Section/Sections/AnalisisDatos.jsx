@@ -2,7 +2,9 @@ import React from 'react'
 
 const AnalisisDatos = () => {
   return (
-    <div>Este es analisis de datos</div>
+    <div>
+      <h1>Este es analisis de datos</h1>
+    </div>
   )
 }
 
