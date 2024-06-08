@@ -68,9 +68,9 @@ app.post('/login', async (req, res) => {
     console.log('Conexión establecida');
 
     const [results] = await connection.execute('SELECT * FROM usuarios WHERE nombre = ?', [LoginUserName]);
-
+      
     if (results.length === 0) {
-
+      console.log('No hay resultados para usuario');
       return res.status(400).send({ error: 'Las credenciales no coinciden' });
     }
 
@@ -78,7 +78,7 @@ app.post('/login', async (req, res) => {
     const passwordMatch = await bcrypt.compare(LoginPassword, user.password);
 
     if (!passwordMatch) {
-
+      console.log('No hay resultados para contraseña');
       return res.status(400).send({ error: 'Las credenciales no coinciden' });
     }
 
@@ -93,7 +93,9 @@ app.post('/login', async (req, res) => {
 
       if (insertedRow && insertedRow.affectedRows > 0) {
         console.log('registro exitoso');
+        // aqui deberia ir lo que manda res.send(results)
         res.send({ message: 'Login exitoso', user });
+        
       } else {
         console.error('Error: No se afectaron filas');
         res.status(500).send({ error: 'Error al registrar acceso' });

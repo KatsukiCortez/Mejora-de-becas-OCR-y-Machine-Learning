@@ -52,6 +52,7 @@ app.post('/login', (req, res)=>{
   // VAMOS A CREAR UN QUERY PARA INSERTAR A LA BASE DE DATOS TABLA USUARIOS
   const SQL = 'SELECT * FROM usuarios WHERE nombre = ? && password = ?'  // VAMOS A ENTRAR LOS VALORES ENTRELAZADSOS A LAS VARIABLES
   const Values = [sentloginUserName, sentLoginPassword]
+        
 
   // QUERY A EJECUTAR
   db.query(SQL, Values, (err, results)=>{
@@ -60,6 +61,8 @@ app.post('/login', (req, res)=>{
       } 
       if (results.length > 0) {
         res.send(results)
+        console.log('Lo que se esta enviando es esto');
+        console.log(results);
       }
       else{
         res.send({message: 'Las credenciales no coinciden'})
