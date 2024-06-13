@@ -1,11 +1,17 @@
 import React from 'react'
+import '../listing.css'
 
-const AdministrarUsuarios = () => {
+const AdminUsers = () => {
   return (
     <div>
-      <h1>Esto es administrar usuarios</h1>
+      <div className='sections'>
+        <h1>Esto es administrar usuarios</h1>
+      </div>
+      <div className='footer'>
+        <h1>Esta es un h1 secundario </h1>
+      </div>
     </div>
   )
 }
 
-export default AdministrarUsuarios
+export default AdminUsers

@@ -33,7 +33,7 @@ const Top = () => {
 
       </div>
 
-      <div className="cardSection flex">
+      {/* <div className="cardSection flex">
         <div className="rightCard flex">
           <h1>Calicacion de becas</h1>
           <p>Oficina de coperacion tecnica internacional esta destinada a....</p>
@@ -43,7 +43,7 @@ const Top = () => {
             <button className='btn'>Top estudiantes</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
