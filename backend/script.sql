@@ -1,5 +1,6 @@
 CREATE TABLE Estudiante (
-  idEstudiante INT PRIMARY KEY AUTO_INCREMENT,  
+  idEstudiante INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(50) UNIQUE NOT NULL,
   nombre VARCHAR(50),
   apPaterno VARCHAR(50),
   apMaterno VARCHAR(50),
@@ -86,17 +87,18 @@ INSERT INTO Roles (idRol, rol) VALUES
 (1, 'administrador'),
 (2, 'calificador');
 
-INSERT INTO Estudiante (nombre, apPaterno, apMaterno, direccion, fechaNacimiento) VALUES
-('Luis', 'González', 'Martínez', 'Av. Principal 123', '2001-03-10'),
-('Marta', 'Fernández', 'López', 'Calle Secundaria 456', '1999-07-25'),
-('Andrés', 'Gómez', 'Rodríguez', 'Plaza Central 789', '2003-01-15'),
-('Lucía', 'Martínez', 'Sánchez', 'Av. Libertad 456', '2000-05-20'),
-('Daniel', 'Hernández', 'Pérez', 'Calle Principal 789', '2002-08-12'),
-('Eva', 'García', 'Fernández', 'Av. Independencia 123', '1998-12-30'),
-('Marcos', 'Sánchez', 'Gómez', 'Calle Central 456', '2004-02-28'),
-('Lucas', 'Rodríguez', 'Martínez', 'Plaza Libertad 789', '2001-06-05'),
-('Ana', 'Pérez', 'Hernández', 'Av. Primavera 123', '1999-10-15'),
-('María', 'Gómez', 'Fernández', 'Calle Jardín 456', '2003-04-20');
+INSERT INTO Estudiante (email, nombre, apPaterno, apMaterno, direccion, fechaNacimiento) VALUES
+('luis.gonzalez@example.com', 'Luis', 'González', 'Martínez', 'Av. Principal 123', '2001-03-10'),
+('marta.fernandez@example.com', 'Marta', 'Fernández', 'López', 'Calle Secundaria 456', '1999-07-25'),
+('andres.gomez@example.com', 'Andrés', 'Gómez', 'Rodríguez', 'Plaza Central 789', '2003-01-15'),
+('lucia.martinez@example.com', 'Lucía', 'Martínez', 'Sánchez', 'Av. Libertad 456', '2000-05-20'),
+('daniel.hernandez@example.com', 'Daniel', 'Hernández', 'Pérez', 'Calle Principal 789', '2002-08-12'),
+('eva.garcia@example.com', 'Eva', 'García', 'Fernández', 'Av. Independencia 123', '1998-12-30'),
+('marcos.sanchez@example.com', 'Marcos', 'Sánchez', 'Gómez', 'Calle Central 456', '2004-02-28'),
+('lucas.rodriguez@example.com', 'Lucas', 'Rodríguez', 'Martínez', 'Plaza Libertad 789', '2001-06-05'),
+('ana.perez@example.com', 'Ana', 'Pérez', 'Hernández', 'Av. Primavera 123', '1999-10-15'),
+('maria.gomez@example.com', 'María', 'Gómez', 'Fernández', 'Calle Jardín 456', '2003-04-20');
+
 
 INSERT INTO IngresoFamiliares (ingresosMensuales, numMiembrosFamilia, idEstudiante) VALUES
 (2500.00, 3, 1),
