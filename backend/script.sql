@@ -190,7 +190,7 @@ INSERT INTO HistorialAcceso (idUsuario, tipoAccion) VALUES
 (9, 'Registro de nuevo usuario'),
 (10, 'Inicio de sesión');
 
-INSERT INTO ComunicacionesUsuarios (idUsuario, mensaje) VALUES
+INSERT INTO ComunicacionesUsuarios (idEstudiante, mensaje) VALUES
 (1, 'Recuerde enviar el documento adicional para la beca'),
 (2, 'Confirmación de inicio de sesión'),
 (3, 'Recuerde completar su perfil'),
