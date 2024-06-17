@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   ComunicacionesUsuarios.associate = function(models) {
-    ComunicacionesUsuarios.belongsTo(models.Usuarios, { foreignKey: 'idUsuario' });
+    ComunicacionesUsuarios.belongsTo(models.Estudiante, { foreignKey: 'idEstudiante' });
   };
 
   return ComunicacionesUsuarios;
