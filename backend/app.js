@@ -131,7 +131,7 @@ app.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(Password, 10);
 
     // Crear un nuevo usuario en la base de datos
-    const [rows] = await connection.execute('INSERT INTO usuarios (email, nombre, password, idRol) VALUES (?, ?, ?, ?)', [Email, UserName, hashedPassword, 3]);
+    const [rows] = await connection.execute('INSERT INTO usuarios (email, nombre, password, idRol) VALUES (?, ?, ?, ?)', [Email, UserName, hashedPassword, 2]);
 
     if (rows.affectedRows === 0) {
       await connection.end();
