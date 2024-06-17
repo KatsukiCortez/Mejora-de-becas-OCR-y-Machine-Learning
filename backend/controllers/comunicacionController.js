@@ -3,7 +3,7 @@ const db = require('../models');
 // Obtener todas las comunicaciones de usuarios
 exports.getComunicacionesUsuarios = async (req, res) => {
   try {
-    // Consulta todas las comunicaciones de usuarios incluyendo información adicional de Usuarios y Estudiante relacionado con SolicitudesBecas
+    // Consulta todas las comunicaciones de usuarios incluyendo información adicional de Estudiante
     const comunicaciones = await db.ComunicacionesUsuarios.findAll({
       include: db.Estudiante
     });

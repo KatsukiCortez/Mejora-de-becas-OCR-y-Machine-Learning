@@ -58,7 +58,6 @@ module.exports = (sequelize, DataTypes) => {
     Usuarios.belongsTo(models.Roles, { foreignKey: 'idRol' });
     Usuarios.belongsTo(models.Estudiante, { foreignKey: 'idEstudiante' });
     Usuarios.hasMany(models.HistorialAcceso, { foreignKey: 'idUsuario' });
-    Usuarios.hasMany(models.ComunicacionesUsuarios, { foreignKey: 'idUsuario' });
   };
 
   return Usuarios;
