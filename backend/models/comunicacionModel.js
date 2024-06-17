@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    idUsuario: {
+    idEstudiante: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Usuarios',
-        key: 'idUsuario'
+        model: 'Estudiante',
+        key: 'idEstudiante'
       }
     },
     mensaje: {
