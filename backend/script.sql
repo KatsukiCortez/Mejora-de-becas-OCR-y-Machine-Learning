@@ -43,9 +43,7 @@ CREATE TABLE Usuarios (
   nombre VARCHAR(50) NOT NULL,
   password VARCHAR(255) NOT NULL,
   idRol INT,
-  idEstudiante INT,
   FOREIGN KEY (idRol) REFERENCES Roles(idRol),
-  FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante)
 );
 
 CREATE TABLE SolicitudesBecas (
@@ -86,8 +84,7 @@ CREATE TABLE ComunicacionesUsuarios (
 
 INSERT INTO Roles (idRol, rol) VALUES
 (1, 'administrador'),
-(2, 'calificador'),
-(3, 'estudiante');
+(2, 'calificador');
 
 INSERT INTO Estudiante (nombre, apPaterno, apMaterno, direccion, fechaNacimiento) VALUES
 ('Luis', 'González', 'Martínez', 'Av. Principal 123', '2001-03-10'),
@@ -137,23 +134,23 @@ INSERT INTO Documentos (resultadoAnalisisML, comentarios, fecha, idEstudiante) V
 ('Rechazado', 'Información contradictoria', '2024-05-05', 9),
 ('Aprobado', 'Documentación completa', '2024-04-15', 10);
 
-INSERT INTO Usuarios (email, nombre, password, idRol, idEstudiante) VALUES
-('usuario1@example.com', 'Juan Pérez', 'contraseña123', 1, NULL),
-('usuario2@example.com', 'María González', 'segura456', 1, NULL),
-('usuario3@example.com', 'Pedro López', 'clave789', 1, NULL),
-('usuario4@example.com', 'Ana Martínez', 'contraseña123', 2, NULL),
-('usuario5@example.com', 'Carlos Sánchez', 'segura456', 2, NULL),
-('usuario6@example.com', 'Laura García', 'clave789', 2, NULL),
-('ejemplo1@dominio.com', 'Juan López', 'clave123', 3, 1),
-('ejemplo2@dominio.com', 'María García', 'segura456', 3, 2),
-('ejemplo3@dominio.com', 'Pedro Martínez', 'contraseña789', 3, 3),
-('ejemplo4@dominio.com', 'Ana Rodríguez', 'clave456', 3, 4),
-('ejemplo5@dominio.com', 'Carlos Sánchez', 'segura789', 3, 5),
-('ejemplo6@dominio.com', 'Laura Pérez', 'contraseña123', 3, 6),
-('ejemplo7@dominio.com', 'Sofía González', 'clave789', 3, 7),
-('ejemplo8@dominio.com', 'Diego Fernández', 'segura123', 3, 8),
-('ejemplo9@dominio.com', 'Elena Ruiz', 'contraseña456', 3, 9),
-('ejemplo10@dominio.com', 'Pablo Gómez', 'segura789', 3, 10);
+INSERT INTO Usuarios (email, nombre, password, idRol) VALUES
+('usuario1@example.com', 'Juan Pérez', 'contraseña123', 1),
+('usuario2@example.com', 'María González', 'segura456', 1),
+('usuario3@example.com', 'Pedro López', 'clave789', 1),
+('usuario4@example.com', 'Ana Martínez', 'contraseña123', 2),
+('usuario5@example.com', 'Carlos Sánchez', 'segura456', 2),
+('usuario6@example.com', 'Laura García', 'clave789', 2),
+('ejemplo1@dominio.com', 'Juan López', 'clave123', 3),
+('ejemplo2@dominio.com', 'María García', 'segura456', 3),
+('ejemplo3@dominio.com', 'Pedro Martínez', 'contraseña789', 3),
+('ejemplo4@dominio.com', 'Ana Rodríguez', 'clave456', 3),
+('ejemplo5@dominio.com', 'Carlos Sánchez', 'segura789', 3),
+('ejemplo6@dominio.com', 'Laura Pérez', 'contraseña123', 3),
+('ejemplo7@dominio.com', 'Sofía González', 'clave789', 3),
+('ejemplo8@dominio.com', 'Diego Fernández', 'segura123', 3),
+('ejemplo9@dominio.com', 'Elena Ruiz', 'contraseña456', 3),
+('ejemplo10@dominio.com', 'Pablo Gómez', 'segura789', 3);
 
 INSERT INTO SolicitudesBecas (idEstudiante, tipoBeca, estado, fechaSolicitud) VALUES
 (1, 'Beca de Mérito', 'En Revisión', '2024-05-20'),
