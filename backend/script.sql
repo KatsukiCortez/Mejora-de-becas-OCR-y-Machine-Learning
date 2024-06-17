@@ -44,7 +44,7 @@ CREATE TABLE Usuarios (
   nombre VARCHAR(50) NOT NULL,
   password VARCHAR(255) NOT NULL,
   idRol INT,
-  FOREIGN KEY (idRol) REFERENCES Roles(idRol),
+  FOREIGN KEY (idRol) REFERENCES Roles(idRol)
 );
 
 CREATE TABLE SolicitudesBecas (
@@ -76,10 +76,10 @@ CREATE TABLE HistorialAcceso (
 
 CREATE TABLE ComunicacionesUsuarios (
   idComunicacion INT PRIMARY KEY AUTO_INCREMENT, 
-  idUsuario INT,
+  idEstudiante INT,
   mensaje VARCHAR(255),
   fechaEnvio DATETIME DEFAULT CONVERT_TZ(NOW(), '+00:00', '+00:00'),
-  FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
+  FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante)
 );
 
 
