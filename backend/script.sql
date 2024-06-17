@@ -143,16 +143,16 @@ INSERT INTO Usuarios (email, nombre, password, idRol) VALUES
 ('usuario4@example.com', 'Ana Martínez', 'contraseña123', 2),
 ('usuario5@example.com', 'Carlos Sánchez', 'segura456', 2),
 ('usuario6@example.com', 'Laura García', 'clave789', 2),
-('ejemplo1@dominio.com', 'Juan López', 'clave123', 3),
-('ejemplo2@dominio.com', 'María García', 'segura456', 3),
-('ejemplo3@dominio.com', 'Pedro Martínez', 'contraseña789', 3),
-('ejemplo4@dominio.com', 'Ana Rodríguez', 'clave456', 3),
-('ejemplo5@dominio.com', 'Carlos Sánchez', 'segura789', 3),
-('ejemplo6@dominio.com', 'Laura Pérez', 'contraseña123', 3),
-('ejemplo7@dominio.com', 'Sofía González', 'clave789', 3),
-('ejemplo8@dominio.com', 'Diego Fernández', 'segura123', 3),
-('ejemplo9@dominio.com', 'Elena Ruiz', 'contraseña456', 3),
-('ejemplo10@dominio.com', 'Pablo Gómez', 'segura789', 3);
+('ejemplo1@dominio.com', 'Juan López', 'clave123', 2),
+('ejemplo2@dominio.com', 'María García', 'segura456', 2),
+('ejemplo3@dominio.com', 'Pedro Martínez', 'contraseña789', 2),
+('ejemplo4@dominio.com', 'Ana Rodríguez', 'clave456', 2),
+('ejemplo5@dominio.com', 'Carlos Sánchez', 'segura789', 2),
+('ejemplo6@dominio.com', 'Laura Pérez', 'contraseña123', 2),
+('ejemplo7@dominio.com', 'Sofía González', 'clave789', 2),
+('ejemplo8@dominio.com', 'Diego Fernández', 'segura123', 2),
+('ejemplo9@dominio.com', 'Elena Ruiz', 'contraseña456', 2),
+('ejemplo10@dominio.com', 'Pablo Gómez', 'segura789', 2);
 
 INSERT INTO SolicitudesBecas (idEstudiante, tipoBeca, estado, fechaSolicitud) VALUES
 (1, 'Beca de Mérito', 'En Revisión', '2024-05-20'),
