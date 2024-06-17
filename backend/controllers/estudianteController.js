@@ -41,9 +41,9 @@ exports.getEstudianteById = async (req, res) => {
 // Crear un nuevo estudiante
 exports.createEstudiante = async (req, res) => {
   try {
-    const { nombre, apPaterno, apMaterno, direccion, fechaNacimiento } = req.body; // Obtener solo los campos necesarios del cuerpo de la solicitud
+    const { email, nombre, apPaterno, apMaterno, direccion, fechaNacimiento } = req.body; // Obtener solo los campos necesarios del cuerpo de la solicitud
     // Crear el nuevo estudiante con los campos proporcionados
-    const newEstudiante = await db.Estudiante.create({ nombre, apPaterno, apMaterno, direccion, fechaNacimiento });
+    const newEstudiante = await db.Estudiante.create({ email, nombre, apPaterno, apMaterno, direccion, fechaNacimiento });
     res.status(201).json(newEstudiante);
   } catch (error) {
     console.error('Error al crear el estudiante:', error.message);
