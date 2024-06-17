@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    idUsuario: {
+    idEstudiante: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Usuarios',
-        key: 'idUsuario'
+        model: 'Estudiante',
+        key: 'idEstudiante'
       }
     },
     mensaje: {
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   ComunicacionesUsuarios.associate = function(models) {
-    ComunicacionesUsuarios.belongsTo(models.Usuarios, { foreignKey: 'idUsuario' });
+    ComunicacionesUsuarios.belongsTo(models.Estudiante, { foreignKey: 'idEstudiante' });
   };
 
   return ComunicacionesUsuarios;
