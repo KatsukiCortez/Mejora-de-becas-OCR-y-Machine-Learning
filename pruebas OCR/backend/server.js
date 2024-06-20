@@ -20,7 +20,7 @@ const pdfToImages = async (pdfPath) => {
     }
 
     const options = {
-        format: 'png',
+        format: 'jpg',
         out_dir: outputDir,
         out_prefix: path.basename(pdfPath, path.extname(pdfPath)),
         page: null // Convertir todas las páginas
