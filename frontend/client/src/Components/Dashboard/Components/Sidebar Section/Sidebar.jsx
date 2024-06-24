@@ -18,7 +18,7 @@ import { BsQuestionCircle } from "react-icons/bs";
 
 
 
-const Sidebar = () => {
+const Sidebar = ({onMenuItemClick}) => {
   return (
     <div className='sideBar grid'>
       <div className="logoDiv flex">
@@ -33,39 +33,39 @@ const Sidebar = () => {
         </h3>
         <ul className="menuLists grid">
           <li className="listItem">
-            <NavLink to="/dashboard" className="menuLink flex">
+            <a href="/dashboard" className="menuLink flex">
               <IoMdSpeedometer className="icon"/>
               <span className='smallText'>
                 DashBoard
               </span>
-            </NavLink>
+            </a>
           </li>
 
           <li className="listItem">
-            <NavLink to='/dashboard/gestion-becas' className="menuLink flex">
+            <a href="#" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('GestionBecas'); }}>
               <FaCheckCircle className="icon"/>
               <span className='smallText'>
                 Gestion de becas
               </span>
-            </NavLink>
+            </a>
           </li>
 
           <li className="listItem">
-            <NavLink to='/dashboard/comunicacion' className="menuLink flex">
+            <a href="#" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('Comunicacion'); }}>
               <MdEmail className="icon"/>
               <span className='smallText'>
                 Comunicacion
               </span>
-            </NavLink>
+            </a>
           </li>
 
           <li className="listItem">
-            <NavLink to='/dashboard/analisis' className="menuLink flex">
+            <a href="#" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('AnalisisDatos'); }}>
               <GrConfigure className="icon"/>
               <span className='smallText'>
                 Analisis de datos
               </span>
-            </NavLink>
+            </a>
           </li>
         </ul>
       </div>
@@ -76,7 +76,7 @@ const Sidebar = () => {
         </h3>
         <ul className="menuLists grid">
           <li className="listItem">
-            <a href="" className="menuLink flex">
+            <a href="#" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('Estadisticas'); }}>
               <FaArrowTrendUp  className="icon"/>
               <span className='smallText'>
                 Estadisticas
@@ -85,7 +85,7 @@ const Sidebar = () => {
           </li>
           
           <li className="listItem">
-            <a href="" className="menuLink flex">
+            <a href="#" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('Historial'); }}>
               <MdHistory  className="icon"/>
               <span className='smallText'>
                 Historial de acceso 
@@ -94,7 +94,7 @@ const Sidebar = () => {
           </li>
           
           <li className="listItem">
-            <a href="/dashboard/gestion-becas" className="menuLink flex">
+            <a href="/dashboard/gestion-becas" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('AdminUsers'); }}>
               <FaUser  className="icon"/>
               <span className='smallText'>
                 Administrar usuarios

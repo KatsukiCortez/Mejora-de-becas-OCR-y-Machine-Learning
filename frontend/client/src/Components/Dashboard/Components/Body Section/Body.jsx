@@ -3,14 +3,13 @@ import './body.css'
 import Top from './Top Section/Top'
 import Listing from './Listing Section/Listing'
 
-
-const Body = () => {
+const Body = ({ selectedItem }) => {
   return (
     <div className='mainContent'>
       <Top/>
 
-      <div className="bottom flex">
-        <Listing/>
+      <div className='listing'>
+      <Listing selectedItem={selectedItem}/>
       </div>
     </div>
   )

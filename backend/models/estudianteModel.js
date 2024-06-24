@@ -6,6 +6,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
+    email: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      unique: true
+    },
     nombre: {
       type: DataTypes.STRING(50),
       allowNull: false
@@ -36,7 +41,6 @@ module.exports = (sequelize, DataTypes) => {
     Estudiante.hasMany(models.HistorialAcademico, { foreignKey: 'idEstudiante' });
     Estudiante.hasMany(models.Documentos, { foreignKey: 'idEstudiante' });
     Estudiante.hasMany(models.SolicitudesBecas, { foreignKey: 'idEstudiante' });
-    Estudiante.hasMany(models.Usuarios, { foreignKey: 'idEstudiante' });
   };
 
   return Estudiante;
