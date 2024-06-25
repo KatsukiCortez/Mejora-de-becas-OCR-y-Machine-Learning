@@ -179,7 +179,7 @@ const GestionBecas = () => {
                 onChange={handleInputChange}
               />
               <br />
-              <button type="submit" className="btn" onClick={handleAddStudent}>
+              <button type="button" className="btn" onClick={handleAddStudent}>
                 Agregar
               </button>
             </form>
@@ -193,7 +193,7 @@ const GestionBecas = () => {
             <span className="close" onClick={() => setShowUploadModal(false)}>&times;</span>
             <h2>Cargar Documento para {selectedStudent.nombre + " " +selectedStudent.apPaterno + " " + selectedStudent.apMaterno}</h2>
             <input type="file" accept="application/pdf" onChange={handleFileChange} />
-            <button type='submit' className="btn" onClick={handleUploadFile}>Subir</button>
+            <button type='button' className="btn" onClick={handleUploadFile}>Subir</button>
           </div>
         </div>
       )}
