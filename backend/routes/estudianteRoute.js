@@ -51,53 +51,51 @@ exports.getEstudianteById = async (req, res) => {
 };
 
 exports.createEstudiante = async (req, res) => {
-  const { nombre, apPaterno, apMaterno, direccion, fechaNacimiento, idIngresoFamiliar, idHistorialAcademico, idDocumento } = req.body;
+  const { email, nombre, apPaterno, apMaterno, direccion, fechaNacimiento } = req.body;
 
   try {
     const connection = await mysql.createConnection(db);
     const [result] = await connection.execute(
-      'INSERT INTO estudiante (nombre, apPaterno, apMaterno, direccion, fechaNacimiento, idIngresoFamiliar, idHistorialAcademico, idDocumento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-      [nombre, apPaterno, apMaterno, direccion, fechaNacimiento, idIngresoFamiliar, idHistorialAcademico, idDocumento]
+      'INSERT INTO estudiante (email, nombre, apPaterno, apMaterno, direccion, fechaNacimiento) VALUES (?, ?, ?, ?, ?, ?)',
+      [email, nombre, apPaterno, apMaterno, direccion, fechaNacimiento]
     );
     const newStudent = {
       idEstudiante: result.insertId,
+      email,
       nombre,
       apPaterno,
       apMaterno,
       direccion,
-      fechaNacimiento,
-      idIngresoFamiliar,
-      idHistorialAcademico,
-      idDocumento
+      fechaNacimiento
     };
     await connection.end();
     res.status(201).json(newStudent);
   } catch (error) {
-    console.error('Error adding student:', error);
-    res.status(500).send({ error: 'Error adding student' });
+    console.error('Error al agregar estudiante:', error);
+    res.status(500).send({ error: 'Error al agregar estudiante' });
   }
 };
 
 exports.updateEstudianteById = async (req, res) => {
   const { id } = req.params;
-  const { nombre, apPaterno, apMaterno, direccion, fechaNacimiento, idIngresoFamiliar, idHistorialAcademico, idDocumento } = req.body;
+  const { nombre, apPaterno, apMaterno, direccion, fechaNacimiento, email } = req.body;
 
   try {
     const connection = await mysql.createConnection(db);
     const [result] = await connection.execute(
-      'UPDATE estudiante SET nombre = ?, apPaterno = ?, apMaterno = ?, direccion = ?, fechaNacimiento = ?, idIngresoFamiliar = ?, idHistorialAcademico = ?, idDocumento = ? WHERE idEstudiante = ?',
-      [nombre, apPaterno, apMaterno, direccion, fechaNacimiento, idIngresoFamiliar, idHistorialAcademico, idDocumento, id]
+      'UPDATE estudiante SET email = ?, nombre = ?, apPaterno = ?, apMaterno = ?, direccion = ?, fechaNacimiento = ? WHERE idEstudiante = ?',
+      [ email, nombre, apPaterno, apMaterno, direccion, fechaNacimiento, id]
     );
     await connection.end();
 
     if (result.affectedRows === 0) {
-      res.status(404).send({ error: 'Student not found' });
+      res.status(404).send({ error: 'Estudiante no encontrado' });
     } else {
-      res.send({ message: 'Student updated successfully' });
+      res.send({ message: 'Estudiante actualizado correctamente' });
     }
   } catch (error) {
-    console.error('Error updating student:', error);
-    res.status(500).send({ error: 'Error updating student' });
+    console.error('Error al actualizar estudiante:', error);
+    res.status(500).send({ error: 'Error al actualizar estudiante' });
   }
 };
 
@@ -110,12 +108,12 @@ exports.deleteEstudianteById = async (req, res) => {
     await connection.end();
 
     if (result.affectedRows === 0) {
-      res.status(404).send({ error: 'Student not found' });
+      res.status(404).send({ error: 'Estudiante no encontrado' });
     } else {
-      res.send({ message: 'Student deleted successfully' });
+      res.send({ message: 'Estudiante eliminado correctamente' });
     }
   } catch (error) {
-    console.error('Error deleting student:', error);
-    res.status(500).send({ error: 'Error deleting student' });
+    console.error('Error al eliminar estudiante:', error);
+    res.status(500).send({ error: 'Error al eliminar estudiante' });
   }
 };

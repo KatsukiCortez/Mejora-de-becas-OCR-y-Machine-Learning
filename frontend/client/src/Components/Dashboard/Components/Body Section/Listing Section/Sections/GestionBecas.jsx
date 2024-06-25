@@ -6,14 +6,12 @@ const GestionBecas = () => {
   const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [newStudent, setNewStudent] = useState({
+    email: '',
     nombre: '',
     apPaterno: '',
     apMaterno: '',
     direccion: '',
-    fechaNacimiento: '',
-    idIngresoFamiliar: '',
-    idHistorialAcademico: '',
-    idDocumento: ''
+    fechaNacimiento: ''
   });
 
   useEffect(() => {
@@ -40,7 +38,7 @@ const GestionBecas = () => {
       setData([...data, response.data]);
       setShowModal(false);
     } catch (error) {
-      console.error('Error adding student:', error);
+      console.error('Error al agregar estudiante:', error);
     }
   };
 
@@ -124,26 +122,13 @@ const GestionBecas = () => {
                 onChange={handleInputChange}
               />
               <input
-                type="number"
-                name="idIngresoFamiliar"
-                placeholder="ID Ingreso Familiar"
-                value={newStudent.idIngresoFamiliar}
+                type="email"
+                name="email"
+                placeholder="Correo Electronico"
+                value={newStudent.email}
                 onChange={handleInputChange}
               />
-              <input
-                type="number"
-                name="idHistorialAcademico"
-                placeholder="ID Historial Académico"
-                value={newStudent.idHistorialAcademico}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="idDocumento"
-                placeholder="ID Documento"
-                value={newStudent.idDocumento}
-                onChange={handleInputChange}
-              />
+              <br />
               <button type="button" className="btn" onClick={handleAddStudent}>
                 Agregar
               </button>
