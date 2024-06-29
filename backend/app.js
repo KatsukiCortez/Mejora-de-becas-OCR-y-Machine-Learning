@@ -131,7 +131,7 @@ app.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(Password, 10);
 
     // Crear un nuevo usuario en la base de datos
-    const [rows] = await connection.execute('INSERT INTO usuarios (email, nombre, password, idRol) VALUES (?, ?, ?, ?)', [Email, UserName, hashedPassword, 3]);
+    const [rows] = await connection.execute('INSERT INTO usuarios (email, nombre, password, idRol) VALUES (?, ?, ?, ?)', [Email, UserName, hashedPassword, 2]);
 
     if (rows.affectedRows === 0) {
       await connection.end();
@@ -148,7 +148,8 @@ app.post('/register', async (req, res) => {
   }
 });
 
-
+//estudiante 
+app.use('/octi', estudianteRoute);
 
 // Configuramos el puerto del servidor
 const PORT = process.env.PORT || 8080;
@@ -157,3 +158,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`El servidor esta corriendo en el puerto ${PORT}.`); // Iniciamos el servidor y mostramos un mensaje en la consola
 });
+
+

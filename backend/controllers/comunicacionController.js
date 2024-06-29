@@ -3,14 +3,9 @@ const db = require('../models');
 // Obtener todas las comunicaciones de usuarios
 exports.getComunicacionesUsuarios = async (req, res) => {
   try {
-    // Consulta todas las comunicaciones de usuarios incluyendo información adicional de Usuarios y Estudiante relacionado con SolicitudesBecas
+    // Consulta todas las comunicaciones de usuarios incluyendo información adicional de Estudiante
     const comunicaciones = await db.ComunicacionesUsuarios.findAll({
-        include: [
-            {
-              model: db.Usuarios, // Incluir información de SolicitudesBecas
-              include: db.Estudiante // Incluir información de Estudiante relacionada con SolicitudesBecas
-            }
-          ]
+      include: db.Estudiante
     });
     res.json(comunicaciones);
   } catch (error) {
@@ -28,12 +23,7 @@ exports.getComunicacionUsuarioById = async (req, res) => {
   try {
     // Busca una comunicación de usuario por su ID e incluye información adicional de Usuarios y Estudiante relacionado con SolicitudesBecas
     const comunicacion = await db.ComunicacionesUsuarios.findByPk(req.params.id,{
-        include: [
-            {
-              model: db.Usuarios, // Incluir información de SolicitudesBecas
-              include: db.Estudiante // Incluir información de Estudiante relacionada con SolicitudesBecas
-            }
-          ]
+      include: db.Estudiante
     });
     if (!comunicacion) {
       return res.status(404).json({

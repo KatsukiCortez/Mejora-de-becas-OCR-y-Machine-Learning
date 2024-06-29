@@ -1,5 +1,6 @@
 CREATE TABLE Estudiante (
-  idEstudiante INT PRIMARY KEY AUTO_INCREMENT,  
+  idEstudiante INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(50) UNIQUE NOT NULL,
   nombre VARCHAR(50),
   apPaterno VARCHAR(50),
   apMaterno VARCHAR(50),
@@ -43,9 +44,7 @@ CREATE TABLE Usuarios (
   nombre VARCHAR(50) NOT NULL,
   password VARCHAR(255) NOT NULL,
   idRol INT,
-  idEstudiante INT,
-  FOREIGN KEY (idRol) REFERENCES Roles(idRol),
-  FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante)
+  FOREIGN KEY (idRol) REFERENCES Roles(idRol)
 );
 
 CREATE TABLE SolicitudesBecas (
@@ -77,29 +76,29 @@ CREATE TABLE HistorialAcceso (
 
 CREATE TABLE ComunicacionesUsuarios (
   idComunicacion INT PRIMARY KEY AUTO_INCREMENT, 
-  idUsuario INT,
+  idEstudiante INT,
   mensaje VARCHAR(255),
   fechaEnvio DATETIME DEFAULT CONVERT_TZ(NOW(), '+00:00', '+00:00'),
-  FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
+  FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante)
 );
 
 
 INSERT INTO Roles (idRol, rol) VALUES
 (1, 'administrador'),
-(2, 'calificador'),
-(3, 'estudiante');
+(2, 'calificador');
 
-INSERT INTO Estudiante (nombre, apPaterno, apMaterno, direccion, fechaNacimiento) VALUES
-('Luis', 'González', 'Martínez', 'Av. Principal 123', '2001-03-10'),
-('Marta', 'Fernández', 'López', 'Calle Secundaria 456', '1999-07-25'),
-('Andrés', 'Gómez', 'Rodríguez', 'Plaza Central 789', '2003-01-15'),
-('Lucía', 'Martínez', 'Sánchez', 'Av. Libertad 456', '2000-05-20'),
-('Daniel', 'Hernández', 'Pérez', 'Calle Principal 789', '2002-08-12'),
-('Eva', 'García', 'Fernández', 'Av. Independencia 123', '1998-12-30'),
-('Marcos', 'Sánchez', 'Gómez', 'Calle Central 456', '2004-02-28'),
-('Lucas', 'Rodríguez', 'Martínez', 'Plaza Libertad 789', '2001-06-05'),
-('Ana', 'Pérez', 'Hernández', 'Av. Primavera 123', '1999-10-15'),
-('María', 'Gómez', 'Fernández', 'Calle Jardín 456', '2003-04-20');
+INSERT INTO Estudiante (email, nombre, apPaterno, apMaterno, direccion, fechaNacimiento) VALUES
+('luis.gonzalez@example.com', 'Luis', 'González', 'Martínez', 'Av. Principal 123', '2001-03-10'),
+('marta.fernandez@example.com', 'Marta', 'Fernández', 'López', 'Calle Secundaria 456', '1999-07-25'),
+('andres.gomez@example.com', 'Andrés', 'Gómez', 'Rodríguez', 'Plaza Central 789', '2003-01-15'),
+('lucia.martinez@example.com', 'Lucía', 'Martínez', 'Sánchez', 'Av. Libertad 456', '2000-05-20'),
+('daniel.hernandez@example.com', 'Daniel', 'Hernández', 'Pérez', 'Calle Principal 789', '2002-08-12'),
+('eva.garcia@example.com', 'Eva', 'García', 'Fernández', 'Av. Independencia 123', '1998-12-30'),
+('marcos.sanchez@example.com', 'Marcos', 'Sánchez', 'Gómez', 'Calle Central 456', '2004-02-28'),
+('lucas.rodriguez@example.com', 'Lucas', 'Rodríguez', 'Martínez', 'Plaza Libertad 789', '2001-06-05'),
+('ana.perez@example.com', 'Ana', 'Pérez', 'Hernández', 'Av. Primavera 123', '1999-10-15'),
+('maria.gomez@example.com', 'María', 'Gómez', 'Fernández', 'Calle Jardín 456', '2003-04-20');
+
 
 INSERT INTO IngresoFamiliares (ingresosMensuales, numMiembrosFamilia, idEstudiante) VALUES
 (2500.00, 3, 1),
@@ -137,23 +136,23 @@ INSERT INTO Documentos (resultadoAnalisisML, comentarios, fecha, idEstudiante) V
 ('Rechazado', 'Información contradictoria', '2024-05-05', 9),
 ('Aprobado', 'Documentación completa', '2024-04-15', 10);
 
-INSERT INTO Usuarios (email, nombre, password, idRol, idEstudiante) VALUES
-('usuario1@example.com', 'Juan Pérez', 'contraseña123', 1, NULL),
-('usuario2@example.com', 'María González', 'segura456', 1, NULL),
-('usuario3@example.com', 'Pedro López', 'clave789', 1, NULL),
-('usuario4@example.com', 'Ana Martínez', 'contraseña123', 2, NULL),
-('usuario5@example.com', 'Carlos Sánchez', 'segura456', 2, NULL),
-('usuario6@example.com', 'Laura García', 'clave789', 2, NULL),
-('ejemplo1@dominio.com', 'Juan López', 'clave123', 3, 1),
-('ejemplo2@dominio.com', 'María García', 'segura456', 3, 2),
-('ejemplo3@dominio.com', 'Pedro Martínez', 'contraseña789', 3, 3),
-('ejemplo4@dominio.com', 'Ana Rodríguez', 'clave456', 3, 4),
-('ejemplo5@dominio.com', 'Carlos Sánchez', 'segura789', 3, 5),
-('ejemplo6@dominio.com', 'Laura Pérez', 'contraseña123', 3, 6),
-('ejemplo7@dominio.com', 'Sofía González', 'clave789', 3, 7),
-('ejemplo8@dominio.com', 'Diego Fernández', 'segura123', 3, 8),
-('ejemplo9@dominio.com', 'Elena Ruiz', 'contraseña456', 3, 9),
-('ejemplo10@dominio.com', 'Pablo Gómez', 'segura789', 3, 10);
+INSERT INTO Usuarios (email, nombre, password, idRol) VALUES
+('usuario1@example.com', 'Juan Pérez', 'contraseña123', 1),
+('usuario2@example.com', 'María González', 'segura456', 1),
+('usuario3@example.com', 'Pedro López', 'clave789', 1),
+('usuario4@example.com', 'Ana Martínez', 'contraseña123', 2),
+('usuario5@example.com', 'Carlos Sánchez', 'segura456', 2),
+('usuario6@example.com', 'Laura García', 'clave789', 2),
+('ejemplo1@dominio.com', 'Juan López', 'clave123', 2),
+('ejemplo2@dominio.com', 'María García', 'segura456', 2),
+('ejemplo3@dominio.com', 'Pedro Martínez', 'contraseña789', 2),
+('ejemplo4@dominio.com', 'Ana Rodríguez', 'clave456', 2),
+('ejemplo5@dominio.com', 'Carlos Sánchez', 'segura789', 2),
+('ejemplo6@dominio.com', 'Laura Pérez', 'contraseña123', 2),
+('ejemplo7@dominio.com', 'Sofía González', 'clave789', 2),
+('ejemplo8@dominio.com', 'Diego Fernández', 'segura123', 2),
+('ejemplo9@dominio.com', 'Elena Ruiz', 'contraseña456', 2),
+('ejemplo10@dominio.com', 'Pablo Gómez', 'segura789', 2);
 
 INSERT INTO SolicitudesBecas (idEstudiante, tipoBeca, estado, fechaSolicitud) VALUES
 (1, 'Beca de Mérito', 'En Revisión', '2024-05-20'),
@@ -191,7 +190,7 @@ INSERT INTO HistorialAcceso (idUsuario, tipoAccion) VALUES
 (9, 'Registro de nuevo usuario'),
 (10, 'Inicio de sesión');
 
-INSERT INTO ComunicacionesUsuarios (idUsuario, mensaje) VALUES
+INSERT INTO ComunicacionesUsuarios (idEstudiante, mensaje) VALUES
 (1, 'Recuerde enviar el documento adicional para la beca'),
 (2, 'Confirmación de inicio de sesión'),
 (3, 'Recuerde completar su perfil'),

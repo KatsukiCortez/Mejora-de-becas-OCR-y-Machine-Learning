@@ -94,7 +94,7 @@ const Sidebar = ({onMenuItemClick}) => {
           </li>
           
           <li className="listItem">
-            <a href="/dashboard/gestion-becas" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('AdministrarUsuarios'); }}>
+            <a href="/dashboard/gestion-becas" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('AdminUsers'); }}>
               <FaUser  className="icon"/>
               <span className='smallText'>
                 Administrar usuarios
