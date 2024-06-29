@@ -18,7 +18,11 @@ const Estadisticas = () => {
       try {
         const estudiantesResponse = await axios.get('/estudiante');
         console.log('Estudiantes Response:', estudiantesResponse.data);
-        setCantidadEstudiantes(estudiantesResponse.data.length);
+        if (Array.isArray(estudiantesResponse.data)) {
+          setCantidadEstudiantes(estudiantesResponse.data.length);
+        } else {
+          console.error('Estudiantes Response is not an array');
+        }
 
         const ingresosResponse = await axios.get('/ingresos-familiares');
         console.log('Ingresos Response:', ingresosResponse.data);
