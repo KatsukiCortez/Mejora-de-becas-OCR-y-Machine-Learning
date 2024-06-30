@@ -89,9 +89,7 @@ const GestionBecas = () => {
             <th>ID</th>
             <th>Nombres</th>
             <th>Apellidos</th>
-            <th>Cargar</th>
             <th>OCR</th>
-            <th>Database</th>
           </tr>
         </thead>
         <tbody>
@@ -111,16 +109,7 @@ const GestionBecas = () => {
                   Cargar
                 </button>
               </td>
-              <td>
-                <button className='btn'>
-                  OCR
-                </button>
-              </td>
-              <td>
-                <button className="btn">
-                  Database
-                </button>
-              </td>
+              
             </tr>
           ))}
         </tbody>

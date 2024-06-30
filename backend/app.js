@@ -325,6 +325,12 @@ app.post('/octi/upload', upload.single('file'), async (req, res) => {
 //estudiante
 app.use('/octi', estudianteRoute);
 
+// INGRESOS FAMILIARES
+app.use('/octi', ingresoFamiliaRoute);
+
+// historial academico
+app.use('/octi', historialAcademicoRoute);
+
 // Configuramos el puerto del servidor
 const PORT = process.env.PORT || 8080;
 

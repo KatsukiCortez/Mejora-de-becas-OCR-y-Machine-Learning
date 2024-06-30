@@ -1,28 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../listing.css';
 
 const AnalisisDatos = () => {
+  const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [selectedStudent, setSelectedStudent] = useState(null);
   const [mlComments, setMlComments] = useState('Espere por favor...'); // MENSAJE ACTUAL PARA ESPERA
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [studentsResponse, ingresosResponse, historialResponse] = await Promise.all([
+          axios.get('http://localhost:8080/octi/estudiante'),
+          axios.get('http://localhost:8080/octi/ingresos-familiares'),
+          axios.get('http://localhost:8080/octi/historial-academico')
+        ]);
+        setStudents(studentsResponse.data);
+        // Puedes manejar ingresos y historial aquí si necesitas almacenarlos
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleMLComments = () => {
-    // SIMULAR LA CONSULTA A MACHINE LEARNING
+    // Simulación de consulta a Machine Learning
     setTimeout(() => {
-      // SIMULACIÓN DE RESPUESTA
       const mockComments = 'Resultados del análisis de Machine Learning.';
       setMlComments(mockComments);
-    }, 2000); // TIEMPO DE CARGA DE 2 SEGUNDOS
-    setShowModal(true); // Mostrar el modal mientras se espera la respuesta del backend
-  };
-
-  const handleFileView = () => {
-    // LOGICA PARA VISUALIZAR EL ARCHIVO DE DATOS
-    // NECESARIO PARA ABRIR LA LOGICA DE DATOS
-    console.log('Visualizar archivo PDF');
+      setShowModal(true); // Mostrar el modal después de obtener los comentarios
+    }, 2000); // Tiempo de carga de 2 segundos
   };
 
   const closeModal = () => {
     setShowModal(false);
+  };
+
+  const handleFileView = () => {
+    console.log('Visualizar archivo PDF');
+    // Lógica para visualizar el archivo PDF
   };
 
   return (
@@ -37,32 +56,31 @@ const AnalisisDatos = () => {
             <th>Ingreso Económico</th>
             <th>Historial Académico</th>
             <th>Comentarios ML</th>
-            <th>Archivo</th>
           </tr>
         </thead>
         <tbody>
-          {/* Aqui se debe mostrar los datos de cada estudiante desde el backend */}
-          <tr>
-            <td>1</td>
-            <td>Yadir</td>
-            <td>Cortez</td>
-            <td>2000</td>
-            <td>14</td>
-            <td>
-              <button className="btn" onClick={handleMLComments}>
-                Comentarios ML
-              </button>
-            </td>
-            <td>
-              <button className="btn" onClick={handleFileView}>
-                Archivo
-              </button>
-            </td>
-          </tr>
+          {students.map((alumno) => (
+            <tr key={alumno.idEstudiante}>
+              <td>{alumno.idEstudiante}</td>
+              <td>{alumno.nombre}</td>
+              <td>{`${alumno.apPaterno} ${alumno.apMaterno}`}</td>
+              {/* Aqudeberías mostrar los datos correctos de ingreso e historial */}
+              <td>{/* Ingreso del alumno */}</td>
+              <td>{/* Historial del alumno */}</td>
+              <td>
+                <button className="btn" onClick={() => {
+                  setSelectedStudent(alumno);
+                  handleMLComments(); // Llamar a la función de comentarios ML
+                }}>
+                  Ver comentario
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
 
-      {/* MOSTRAR COMENTARIOS */}
+      {/* Modal para mostrar los comentarios de Machine Learning */}
       {showModal && (
         <div className="modal">
           <div className="modal-content">
