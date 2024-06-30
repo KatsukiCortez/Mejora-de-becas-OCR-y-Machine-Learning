@@ -4,11 +4,12 @@ import axios from 'axios';
 function FileUpload() {
     const [file, setFile] = useState(null);
     const [text, setText] = useState('');
-    const [error, setError] = useState(''); // NUEVO ESTADO PARA ERRORES
+    const [features, setFeatures] = useState(null);
+    const [error, setError] = useState('');
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
-        setError(''); // LIMPIAR ERROR AL CAMBIAR DE ARCHIVO
+        setError('');
     };
 
     const handleSubmit = async (e) => {
@@ -28,10 +29,11 @@ function FileUpload() {
                 },
             });
             setText(response.data.text);
-            setError(''); // LIMPIAR ERROR SI LA PETICIÓN FUE EXITOSA
+            setFeatures(response.data.features);
+            setError('');
         } catch (error) {
             console.error('Error al subir el archivo', error);
-            setError('Error al subir el archivo.'); // MOSTRAR MENSAJE DE ERROR
+            setError('Error al subir el archivo.');
         }
     };
 
@@ -41,10 +43,20 @@ function FileUpload() {
                 <input type="file" accept=".pdf" onChange={handleFileChange} className='pdf'/>
                 <button type="submit" className='btn'>Subir archivo</button>
             </form>
-            {error && <div style={{ color: 'red' }}>{error}</div>} {/* MENSAJE DE ERROR */}
+            {error && <div style={{ color: 'red' }}>{error}</div>}
             {text && <div>
                 <h3>Texto extraído:</h3>
                 <p>{text}</p>
+            </div>}
+            {features && <div>
+                <h3>Características Claves:</h3>
+                <p>Voluntariado: {features.voluntariado ? 'Sí' : 'No'}</p>
+                <p>Promedio: {features.promedio !== null ? features.promedio : 'No disponible'}</p>
+                <p>Experiencia Laboral: {features.experiencia ? 'Sí' : 'No'}</p>
+                <p>Habilidades: {features.habilidades.join(', ')}</p>
+                <p>Certificaciones: {features.certificacion ? 'Si' : 'No'}</p>
+                <p>Educacion: {features.educacion ? 'Si' : 'No'}</p>
+                
             </div>}
         </div>
     );

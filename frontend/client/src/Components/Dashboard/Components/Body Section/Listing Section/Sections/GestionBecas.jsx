@@ -4,16 +4,17 @@ import '../listing.css';
 
 const GestionBecas = () => {
   const [data, setData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [pdfFile, setPdfFile] = useState(null);
   const [newStudent, setNewStudent] = useState({
+    email: '',
     nombre: '',
     apPaterno: '',
     apMaterno: '',
     direccion: '',
-    fechaNacimiento: '',
-    idIngresoFamiliar: '',
-    idHistorialAcademico: '',
-    idDocumento: ''
+    fechaNacimiento: ''
   });
 
   useEffect(() => {
@@ -38,11 +39,46 @@ const GestionBecas = () => {
     try {
       const response = await axios.post('http://localhost:8080/octi/estudiante', newStudent);
       setData([...data, response.data]);
-      setShowModal(false);
+      setShowAddModal(false);
     } catch (error) {
-      console.error('Error adding student:', error);
+      console.error('Error al agregar estudiante:', error);
     }
   };
+
+  const handleFileChange = (e) => {
+    setPdfFile(e.target.files[0]);
+  };
+
+  const handleUploadFile = async () => {
+    if (!pdfFile) {
+      alert('Por favor, seleccione un archivo PDF.');
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append('file', pdfFile);
+    formData.append('studentId', selectedStudent.idEstudiante); // Agrega el studentId al formData
+  
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/octi/upload`, // Asegúrate de que la ruta sea correcta
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      );
+      console.log('Respuesta del servidor:', response.data);
+      alert('Archivo subido exitosamente.');
+      setShowUploadModal(false);
+    } catch (error) {
+      console.error('Error al subir el archivo:', error);
+      alert('Error al subir el archivo. Por favor, inténtelo de nuevo.');
+    }
+  };
+  
+  
 
   return (
     <div>
@@ -53,9 +89,7 @@ const GestionBecas = () => {
             <th>ID</th>
             <th>Nombres</th>
             <th>Apellidos</th>
-            <th>Cargar</th>
             <th>OCR</th>
-            <th>Database</th>
           </tr>
         </thead>
         <tbody>
@@ -65,27 +99,30 @@ const GestionBecas = () => {
               <td>{alumno.nombre}</td>
               <td>{`${alumno.apPaterno} ${alumno.apMaterno}`}</td>
               <td>
-                <button className="btn">Cargar</button>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    setSelectedStudent(alumno);
+                    setShowUploadModal(true);
+                  }}
+                >
+                  Cargar
+                </button>
               </td>
-              <td>
-                <button className="btn">OCR</button>
-              </td>
-              <td>
-                <button className="btn">Database</button>
-              </td>
+              
             </tr>
           ))}
         </tbody>
       </table>
 
-      <button className="btn" onClick={() => setShowModal(true)}>
+      <button className="btn" onClick={() => setShowAddModal(true)}>
         Agregar estudiante
       </button>
 
-      {showModal && (
+      {showAddModal && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close" onClick={() => setShowModal(false)}>&times;</span>
+            <span className="close" onClick={() => setShowAddModal(false)}>&times;</span>
             <h2>Agregar Nuevo Estudiante</h2>
             <form>
               <input
@@ -124,30 +161,28 @@ const GestionBecas = () => {
                 onChange={handleInputChange}
               />
               <input
-                type="number"
-                name="idIngresoFamiliar"
-                placeholder="ID Ingreso Familiar"
-                value={newStudent.idIngresoFamiliar}
+                type="email"
+                name="email"
+                placeholder="Correo Electrónico"
+                value={newStudent.email}
                 onChange={handleInputChange}
               />
-              <input
-                type="number"
-                name="idHistorialAcademico"
-                placeholder="ID Historial Académico"
-                value={newStudent.idHistorialAcademico}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="idDocumento"
-                placeholder="ID Documento"
-                value={newStudent.idDocumento}
-                onChange={handleInputChange}
-              />
+              <br />
               <button type="button" className="btn" onClick={handleAddStudent}>
                 Agregar
               </button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showUploadModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowUploadModal(false)}>&times;</span>
+            <h2>Cargar Documento para {selectedStudent.nombre + " " +selectedStudent.apPaterno + " " + selectedStudent.apMaterno}</h2>
+            <input type="file" accept="application/pdf" onChange={handleFileChange} />
+            <button type='button' className="btn" onClick={handleUploadFile}>Subir</button>
           </div>
         </div>
       )}

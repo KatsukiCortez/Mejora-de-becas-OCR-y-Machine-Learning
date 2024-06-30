@@ -75,14 +75,14 @@ const Sidebar = ({onMenuItemClick}) => {
           Configuraciones
         </h3>
         <ul className="menuLists grid">
-          <li className="listItem">
+          {/* <li className="listItem">
             <a href="#" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('Estadisticas'); }}>
               <FaArrowTrendUp  className="icon"/>
               <span className='smallText'>
                 Estadisticas
               </span>
             </a>
-          </li>
+          </li> */}
           
           <li className="listItem">
             <a href="#" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('Historial'); }}>
