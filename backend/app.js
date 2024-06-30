@@ -14,6 +14,7 @@ const documentoRoute = require('./routes/documentoRoute');
 const comunicacionRoute = require('./routes/comunicacionRoute');
 const historialAccesoRoute = require('./routes/historialAccesoRoute');
 const mysql = require('mysql2/promise'); // Versión de mysql2 que soporta promesas
+const estadisticasRoute = require('./routes/estadisticasRoute');
 
 // Inicializamos la aplicación de Express
 const app = express();
@@ -36,18 +37,20 @@ app.use(cors(corsOptions));
 // Middleware para parsear el cuerpo de las solicitudes en formato JSON
 app.use(express.json());
 
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 
-app.use('/octi',estudianteRoute);
-app.use('/octi',roleRoute);
-app.use('/octi',seguimientoRoute); 
-app.use('/octi',solicitudesRoute);
-app.use('/octi',ingresoFamiliaRoute);
-app.use('/octi',usuarioRoute);
-app.use('/octi',historialAcademicoRoute);
-app.use('/octi',documentoRoute);
-app.use('/octi',comunicacionRoute); 
-app.use('/octi',historialAccesoRoute);
+// Registrar rutas
+app.use('/octi', estudianteRoute);
+app.use('/octi', roleRoute);
+app.use('/octi', seguimientoRoute); 
+app.use('/octi', solicitudesRoute);
+app.use('/octi', ingresoFamiliaRoute);
+app.use('/octi', usuarioRoute);
+app.use('/octi', historialAcademicoRoute);
+app.use('/octi', documentoRoute);
+app.use('/octi', comunicacionRoute); 
+app.use('/octi', historialAccesoRoute);
+app.use('/octi', estadisticasRoute);
 
 // Middleware para parsear el cuerpo de las solicitudes con URL-encoded data
 app.use(express.urlencoded({ extended: true }));
@@ -112,8 +115,6 @@ app.post('/login', async (req, res) => {
   }
 });
 
-
-
 // Endpoint para registrar un nuevo usuario
 app.post('/register', async (req, res) => {
   // Obtener los datos del cuerpo de la solicitud
@@ -148,15 +149,9 @@ app.post('/register', async (req, res) => {
   }
 });
 
-//estudiante 
-app.use('/octi', estudianteRoute);
-
 // Configuramos el puerto del servidor
 const PORT = process.env.PORT || 8080;
-
 
 app.listen(PORT, () => {
   console.log(`El servidor esta corriendo en el puerto ${PORT}.`); // Iniciamos el servidor y mostramos un mensaje en la consola
 });
-
-

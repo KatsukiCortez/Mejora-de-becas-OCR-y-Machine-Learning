@@ -16,31 +16,37 @@ const Estadisticas = () => {
   useEffect(() => {
     const fetchEstadisticas = async () => {
       try {
-        const estudiantesResponse = await axios.get('/estudiante');
+        const estudiantesResponse = await axios.get('/octi/estudiante');
         console.log('Estudiantes Response:', estudiantesResponse.data);
         setCantidadEstudiantes(estudiantesResponse.data.length);
 
-        const ingresosResponse = await axios.get('/ingresos-familiares');
+        const ingresosResponse = await axios.get('/octi/ingresos-familiares');
         console.log('Ingresos Response:', ingresosResponse.data);
 
         if (Array.isArray(ingresosResponse.data)) {
-          const totalIngresos = ingresosResponse.data.reduce((acc, ingreso) => acc + ingreso.ingresosMensuales, 0);
+          const totalIngresos = ingresosResponse.data.reduce((acc, ingreso) => {
+            return acc + parseFloat(ingreso.ingresosMensuales);
+          }, 0);
           setPromedioIngresosFamiliares(totalIngresos / ingresosResponse.data.length);
+          console.log('respuesta ingreso familiares:', totalIngresos);
         } else {
           console.error('Ingresos Response is not an array');
         }
 
-        const historialAcademicoResponse = await axios.get('/historial-academico');
+        const historialAcademicoResponse = await axios.get('/octi/historial-academico');
         console.log('Historial Academico Response:', historialAcademicoResponse.data);
 
         if (Array.isArray(historialAcademicoResponse.data)) {
-          const totalPromedio = historialAcademicoResponse.data.reduce((acc, historial) => acc + historial.promedio, 0);
+          const totalPromedio = historialAcademicoResponse.data.reduce((acc, historial) => {
+            return acc + parseFloat(historial.promedio);
+          }, 0);
           setPromedioAcademico(totalPromedio / historialAcademicoResponse.data.length);
+          console.log('respuesta historial academico:', totalPromedio);
         } else {
           console.error('Historial Academico Response is not an array');
         }
 
-        const solicitudesResponse = await axios.get('/solicitudes-becas');
+        const solicitudesResponse = await axios.get('/octi/solicitudes-becas');
         console.log('Solicitudes Response:', solicitudesResponse.data);
 
         if (Array.isArray(solicitudesResponse.data)) {
@@ -59,7 +65,7 @@ const Estadisticas = () => {
           console.error('Solicitudes Response is not an array');
         }
 
-        const documentosResponse = await axios.get('/documentos');
+        const documentosResponse = await axios.get('/octi/documentos');
         console.log('Documentos Response:', documentosResponse.data);
 
         if (Array.isArray(documentosResponse.data)) {
@@ -102,15 +108,57 @@ const Estadisticas = () => {
       <h1>Estadísticas</h1>
       <div>
         <h2>Cantidad de Estudiantes Registrados</h2>
-        <p>{cantidadEstudiantes}</p>
+        <BarChart
+          width={500}
+          height={300}
+          data={[{ name: 'Estudiantes', value: cantidadEstudiantes }]}
+          margin={{
+            top: 5, right: 30, left: 20, bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="value" fill="#8884d8" />
+        </BarChart>
       </div>
       <div>
         <h2>Promedio de Ingresos Familiares</h2>
-        <p>{promedioIngresosFamiliares.toFixed(2)}</p>
+        <BarChart
+          width={500}
+          height={300}
+          data={[{ name: 'Promedio de Ingresos', value: promedioIngresosFamiliares.toFixed(2) }]}
+          margin={{
+            top: 5, right: 30, left: 20, bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="value" fill="#8884d8" />
+        </BarChart>
       </div>
       <div>
         <h2>Promedio Académico General de los Estudiantes</h2>
-        <p>{promedioAcademico.toFixed(2)}</p>
+        <BarChart
+          width={500}
+          height={300}
+          data={[{ name: 'Promedio Académico', value: promedioAcademico.toFixed(2) }]}
+          margin={{
+            top: 5, right: 30, left: 20, bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="value" fill="#8884d8" />
+        </BarChart>
       </div>
       <div>
         <h2>Cantidad de Solicitudes de Becas por Estado</h2>
