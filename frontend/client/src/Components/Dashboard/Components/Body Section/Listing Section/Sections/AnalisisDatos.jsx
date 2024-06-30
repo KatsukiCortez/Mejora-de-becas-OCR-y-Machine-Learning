@@ -4,6 +4,8 @@ import '../listing.css';
 
 const AnalisisDatos = () => {
   const [students, setStudents] = useState([]);
+  const [ingresosFamiliares, setIngresosFamiliares] = useState([]);
+  const [historialAcademico, setHistorialAcademico] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [mlComments, setMlComments] = useState('Espere por favor...'); // MENSAJE ACTUAL PARA ESPERA
@@ -17,7 +19,8 @@ const AnalisisDatos = () => {
           axios.get('http://localhost:8080/octi/historial-academico')
         ]);
         setStudents(studentsResponse.data);
-        // Puedes manejar ingresos y historial aquí si necesitas almacenarlos
+        setIngresosFamiliares(ingresosResponse.data);
+        setHistorialAcademico(historialResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -44,6 +47,16 @@ const AnalisisDatos = () => {
     // Lógica para visualizar el archivo PDF
   };
 
+  const getIngresoFamiliar = (studentId) => {
+    const ingreso = ingresosFamiliares.find(ingreso => ingreso.idEstudiante === studentId);
+    return ingreso ? `${ingreso.ingresosMensuales} - ${ingreso.numMiembrosFamilia} miembros` : 'No disponible';
+  };
+
+  const getHistorialAcademico = (studentId) => {
+    const historial = historialAcademico.find(historial => historial.idEstudiante === studentId);
+    return historial ? `${historial.promedio} en ${historial.institucionEducativa}` : 'No disponible';
+  };
+
   return (
     <div className="sections">
       <h1>Analisis de Datos</h1>
@@ -64,9 +77,8 @@ const AnalisisDatos = () => {
               <td>{alumno.idEstudiante}</td>
               <td>{alumno.nombre}</td>
               <td>{`${alumno.apPaterno} ${alumno.apMaterno}`}</td>
-              {/* Aqudeberías mostrar los datos correctos de ingreso e historial */}
-              <td>{/* Ingreso del alumno */}</td>
-              <td>{/* Historial del alumno */}</td>
+              <td>{getIngresoFamiliar(alumno.idEstudiante)}</td>
+              <td>{getHistorialAcademico(alumno.idEstudiante)}</td>
               <td>
                 <button className="btn" onClick={() => {
                   setSelectedStudent(alumno);
