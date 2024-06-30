@@ -14,7 +14,6 @@ const documentoRoute = require('./routes/documentoRoute');
 const comunicacionRoute = require('./routes/comunicacionRoute');
 const historialAccesoRoute = require('./routes/historialAccesoRoute');
 const mysql = require('mysql2/promise'); // Versión de mysql2 que soporta promesas
-const estadisticasRoute = require('./routes/estadisticasRoute');
 
 // Inicializamos la aplicación de Express
 const app = express();
@@ -50,7 +49,6 @@ app.use('/octi', historialAcademicoRoute);
 app.use('/octi', documentoRoute);
 app.use('/octi', comunicacionRoute); 
 app.use('/octi', historialAccesoRoute);
-app.use('/octi', estadisticasRoute);
 
 // Middleware para parsear el cuerpo de las solicitudes con URL-encoded data
 app.use(express.urlencoded({ extended: true }));
