@@ -30,12 +30,20 @@ const AnalisisDatos = () => {
   }, []);
 
   const handleMLComments = () => {
+    // Mostrar mensaje inicial
+    setMlComments('Esperando resultado del análisis de ML');
+    setShowModal(true); // Mostrar el modal inicial
+  
     // Simulación de consulta a Machine Learning
     setTimeout(() => {
-      const mockComments = 'Resultados del análisis de Machine Learning.';
+      const mockComments = 'Aprobado'; // Resultado después de la consulta
       setMlComments(mockComments);
-      setShowModal(true); // Mostrar el modal después de obtener los comentarios
-    }, 2000); // Tiempo de carga de 2 segundos
+    }, 2000); // Tiempo de carga de 2 segundos para simular la consulta
+  
+    // Cerrar modal después de un tiempo (opcional)
+    setTimeout(() => {
+      setShowModal(false);
+    }, 4000); // Cerrar el modal después de 4 segundos
   };
 
   const closeModal = () => {
