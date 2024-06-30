@@ -15,10 +15,6 @@ const comunicacionRoute = require('./routes/comunicacionRoute');
 const historialAccesoRoute = require('./routes/historialAccesoRoute');
 const mysql = require('mysql2/promise'); // Versión de mysql2 que soporta promesas
 
-const tensorflowRoute = require('./routes/tensorflowRoute');
-const { loadModel } = require('./utils/tensorflowModel');
-
-
 // Inicializamos la aplicación de Express
 const app = express();
 
@@ -41,8 +37,6 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(bodyParser.json()); 
-
-app.use('/octi',tensorflowRoute)
 
 app.use('/octi',estudianteRoute);
 app.use('/octi',roleRoute);

@@ -137,7 +137,7 @@ INSERT INTO Documentos (resultadoAnalisisML, comentarios, fecha, idEstudiante) V
 ('Aprobado', 'Documentación completa', '2024-04-15', 10);
 
 INSERT INTO Usuarios (email, nombre, password, idRol) VALUES
-('usuario1@example.com', 'Juan Pérez', 'contraseña123', 1),
+('usuario1@example.com', ' PéreJuanz', 'contraseña123', 1),
 ('usuario2@example.com', 'María González', 'segura456', 1),
 ('usuario3@example.com', 'Pedro López', 'clave789', 1),
 ('usuario4@example.com', 'Ana Martínez', 'contraseña123', 2),
