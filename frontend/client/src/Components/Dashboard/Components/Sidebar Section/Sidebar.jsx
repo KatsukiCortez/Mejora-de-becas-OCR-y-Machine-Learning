@@ -1,7 +1,7 @@
 import React from 'react';
 import './sidebar.css';
 import logo from '../../Assets/logo.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // Iconos
 import { IoMdSpeedometer } from "react-icons/io";
@@ -13,6 +13,14 @@ import { FaArrowUp, FaUser } from "react-icons/fa";
 import { BsQuestionCircle } from "react-icons/bs";
 
 const Sidebar = ({ onMenuItemClick }) => {
+  const navigateTo = useNavigate();
+
+  // Función para salir y eliminar el token
+  const salirSinVolver = () => {
+    localStorage.removeItem('token');
+    navigateTo('/');
+  };
+
   return (
     <div className='sideBar grid'>
       <div className="logoDiv flex">
@@ -71,17 +79,17 @@ const Sidebar = ({ onMenuItemClick }) => {
           </li>
 
           <li className="listItem">
-            <a href="/dashboard/gestion-becas" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('AdminUsers'); }}>
+            <NavLink to="/dashboard/gestion-becas" className="menuLink flex" onClick={(e) => { e.preventDefault(); onMenuItemClick('AdminUsers'); }}>
               <FaUser className="icon" />
               <span className='smallText'>Administrar Usuarios</span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
 
       <div className="logoutDiv">
         <li className='listItem'>
-          <NavLink to="/" className='menuLink flex'>
+          <NavLink to="/" className='menuLink flex' onClick={salirSinVolver}>
             <RiLogoutBoxFill className='icon' />
             <span className='smallText'>Cerrar Sesion</span>
           </NavLink>
